@@ -30,9 +30,9 @@ class Citie extends StatelessWidget {
             ),
           ),
           Container(
-            constraints: const BoxConstraints.expand(width: 300, height: 300),
+            constraints: const BoxConstraints.expand(width: 400, height: 400),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(5),
               image: DecorationImage(
                   image: AssetImage('assets/images/$image'), fit: BoxFit.cover),
             ),

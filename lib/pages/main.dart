@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/components/button_qap.dart';
+import 'package:litoral_na_mao/components/buttons_qap.dart';
 import 'package:litoral_na_mao/components/carousel.dart';
 import 'package:litoral_na_mao/components/cities.dart';
 import 'package:litoral_na_mao/components/header.dart';
@@ -19,7 +19,7 @@ class LitoralNaMao extends StatelessWidget {
       home: Scaffold(
         key: scaffoldKey,
         body: ListView(
-          children: const [Header(), Carousel(), Cities(), ButtonQap()],
+          children: const [Header(), Carousel(), Cities(), ButtonsQap()],
         ),
         endDrawer: Drawer(
           child: ListView(

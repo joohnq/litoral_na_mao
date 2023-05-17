@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/components/button_qap.dart';
+import 'package:litoral_na_mao/components/buttons_qap.dart';
+import 'package:litoral_na_mao/components/buttons_teg.dart';
 import 'package:litoral_na_mao/components/carousel.dart';
 import 'package:litoral_na_mao/components/header.dart';
+import 'package:litoral_na_mao/components/search_bar.dart';
 
 class CitieDetail extends StatelessWidget {
   const CitieDetail({Key? key}) : super(key: key);
@@ -14,7 +16,13 @@ class CitieDetail extends StatelessWidget {
       home: Scaffold(
         key: scaffoldKey,
         body: ListView(
-          children: const [Header(), Carousel(), ButtonQap()],
+          children: const [
+            Header(),
+            FormSearchBar(),
+            Carousel(),
+            ButtonsTeg(),
+            ButtonsQap()
+          ],
         ),
         endDrawer: Drawer(
           child: ListView(

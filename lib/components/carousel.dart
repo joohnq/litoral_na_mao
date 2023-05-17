@@ -30,10 +30,6 @@ class Carousel extends StatelessWidget {
                       return Container(
                         decoration: const BoxDecoration(
                           border: Border(
-                            top: BorderSide(
-                              color: Color.fromARGB(255, 235, 98, 48),
-                              width: 10,
-                            ),
                             bottom: BorderSide(
                               color: Color.fromARGB(255, 235, 98, 48),
                               width: 10,
