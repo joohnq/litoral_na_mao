@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:litoral_na_mao/pages/turism_list.dart';
+// import 'package:litoral_na_mao/pages/turism_list.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ButtonsTeg extends StatelessWidget {
-  const ButtonsTeg({Key? key}) : super(key: key);
+  const ButtonsTeg({Key? key, required this.name}) : super(key: key);
+
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -17,82 +21,88 @@ class ButtonsTeg extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Container(
-                    height: 100,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 25, 60, 83),
-                            width: 1)),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.compare_arrows,
-                          size: 40,
-                          color: Color.fromARGB(255, 25, 60, 83),
-                        ),
-                        Text(
-                          'Turismo',
-                          style:
-                              TextStyle(color: Color.fromARGB(255, 25, 60, 83)),
-                        )
-                      ],
+                GestureDetector(
+                  child: Expanded(
+                    child: Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 25, 60, 83),
+                              width: 1)),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.compare_arrows,
+                            size: 40,
+                            color: Color.fromARGB(255, 25, 60, 83),
+                          ),
+                          Text(
+                            'Turismo',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 25, 60, 83)),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(width: 10),
-                Expanded(
-                  child: Container(
-                    height: 100,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 25, 60, 83),
-                            width: 1)),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.calendar_month,
-                          size: 40,
-                          color: Color.fromARGB(255, 25, 60, 83),
-                        ),
-                        Text(
-                          'Eventos',
-                          style:
-                              TextStyle(color: Color.fromARGB(255, 25, 60, 83)),
-                        )
-                      ],
+                GestureDetector(
+                  child: Expanded(
+                    child: Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 25, 60, 83),
+                              width: 1)),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.calendar_month,
+                            size: 40,
+                            color: Color.fromARGB(255, 25, 60, 83),
+                          ),
+                          Text(
+                            'Eventos',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 25, 60, 83)),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(width: 10),
-                Expanded(
-                  child: Container(
-                    height: 100,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 25, 60, 83),
-                            width: 1)),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.place,
-                          size: 40,
-                          color: Color.fromARGB(255, 25, 60, 83),
-                        ),
-                        Text(
-                          'Guia',
-                          style:
-                              TextStyle(color: Color.fromARGB(255, 25, 60, 83)),
-                        ),
-                        Text(
-                          'Comercial',
-                          style:
-                              TextStyle(color: Color.fromARGB(255, 25, 60, 83)),
-                        )
-                      ],
+                GestureDetector(
+                  child: Expanded(
+                    child: Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 25, 60, 83),
+                              width: 1)),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.place,
+                            size: 40,
+                            color: Color.fromARGB(255, 25, 60, 83),
+                          ),
+                          Text(
+                            'Guia',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 25, 60, 83)),
+                          ),
+                          Text(
+                            'Comercial',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 25, 60, 83)),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -106,27 +116,38 @@ class ButtonsTeg extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
-                  child: Container(
-                    height: 100,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          color: const Color.fromARGB(255, 25, 60, 83),
-                          width: 1),
-                    ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.compare_arrows,
-                          size: 60,
-                          color: Color.fromARGB(255, 25, 60, 83),
-                        ),
-                        Text(
-                          'Turismo',
-                          style:
-                              TextStyle(color: Color.fromARGB(255, 25, 60, 83)),
-                        )
-                      ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TurismList(
+                                  name: name,
+                                )),
+                      );
+                    },
+                    child: Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 25, 60, 83),
+                            width: 1),
+                      ),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.compare_arrows,
+                            size: 60,
+                            color: Color.fromARGB(255, 25, 60, 83),
+                          ),
+                          Text(
+                            'Turismo',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 25, 60, 83)),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),

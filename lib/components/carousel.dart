@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class Carousel extends StatelessWidget {
-  const Carousel({Key? key}) : super(key: key);
+  const Carousel({Key? key, required this.images}) : super(key: key);
+
+  final List<String> images;
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +21,7 @@ class Carousel extends StatelessWidget {
                   autoPlay: true,
                   autoPlayInterval: const Duration(seconds: 3),
                 ),
-                items: [
-                  'caraguatatuba.jpg',
-                  'ilhabela.jpg',
-                  'saosebastiao.jpg',
-                  'ubatuba.jpg'
-                ].map((i) {
+                items: images.map((i) {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(

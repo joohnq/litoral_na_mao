@@ -14,7 +14,8 @@ class Citie extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const CitieDetail()),
+          MaterialPageRoute(
+              builder: (context) => CitieDetail(name: name, image: image)),
         );
       },
       child: Container(
