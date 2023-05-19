@@ -18,27 +18,31 @@ class Citie extends StatelessWidget {
               builder: (context) => CitieDetail(name: name, image: image)),
         );
       },
-      child: Container(
-        padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-        child: Column(children: [
-          Container(
-            margin: const EdgeInsets.only(bottom: 10),
-            child: Text(
-              name,
-              style: const TextStyle(
-                fontSize: 22,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+          child: Column(children: [
+            Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              child: Text(
+                name,
+                style: const TextStyle(
+                  fontSize: 22,
+                ),
               ),
             ),
-          ),
-          Container(
-            constraints: const BoxConstraints.expand(width: 400, height: 400),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              image: DecorationImage(
-                  image: AssetImage('assets/images/$image'), fit: BoxFit.cover),
-            ),
-          )
-        ]),
+            Container(
+              constraints: const BoxConstraints.expand(width: 400, height: 350),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                image: DecorationImage(
+                    image: AssetImage('assets/images/$image'),
+                    fit: BoxFit.cover),
+              ),
+            )
+          ]),
+        ),
       ),
     );
   }

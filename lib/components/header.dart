@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litoral_na_mao/colors.dart';
 
 class Header extends StatelessWidget {
   const Header({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class Header extends StatelessWidget {
       decoration: const BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: Color.fromARGB(255, 235, 98, 48),
+            color: ColorPalette.orange,
             width: 10,
           ),
         ),
@@ -41,9 +42,9 @@ class Header extends StatelessWidget {
                   onTap: () {
                     Scaffold.of(context).openEndDrawer();
                   },
-                  hoverColor: Colors.transparent,
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
+                  hoverColor: ColorPalette.transparent,
+                  splashColor: ColorPalette.transparent,
+                  highlightColor: ColorPalette.transparent,
                   child: const Icon(Icons.menu_rounded, size: 35),
                 ),
               ],

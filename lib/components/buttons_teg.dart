@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/pages/turism_list.dart';
-// import 'package:litoral_na_mao/pages/turism_list.dart';
+import 'package:litoral_na_mao/colors.dart';
+import 'package:litoral_na_mao/pages/guia_comercial_list.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ButtonsTeg extends StatelessWidget {
@@ -21,14 +21,13 @@ class ButtonsTeg extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GestureDetector(
-                  child: Expanded(
+                Expanded(
+                  child: GestureDetector(
                     child: Container(
                       height: 100,
                       decoration: BoxDecoration(
-                          border: Border.all(
-                              color: const Color.fromARGB(255, 25, 60, 83),
-                              width: 1)),
+                          border:
+                              Border.all(color: ColorPalette.blue, width: 2)),
                       child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -40,7 +39,10 @@ class ButtonsTeg extends StatelessWidget {
                           Text(
                             'Turismo',
                             style: TextStyle(
-                                color: Color.fromARGB(255, 25, 60, 83)),
+                              color: ColorPalette.blue,
+                              fontWeight: (FontWeight.bold),
+                              fontSize: 18,
+                            ),
                           )
                         ],
                       ),
@@ -48,14 +50,14 @@ class ButtonsTeg extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
-                GestureDetector(
-                  child: Expanded(
+                Expanded(
+                  child: GestureDetector(
                     child: Container(
                       height: 100,
                       decoration: BoxDecoration(
                           border: Border.all(
                               color: const Color.fromARGB(255, 25, 60, 83),
-                              width: 1)),
+                              width: 2)),
                       child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -67,7 +69,9 @@ class ButtonsTeg extends StatelessWidget {
                           Text(
                             'Eventos',
                             style: TextStyle(
-                                color: Color.fromARGB(255, 25, 60, 83)),
+                                color: Color.fromARGB(255, 25, 60, 83),
+                                fontWeight: (FontWeight.bold),
+                                fontSize: 18),
                           )
                         ],
                       ),
@@ -75,14 +79,24 @@ class ButtonsTeg extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
-                GestureDetector(
-                  child: Expanded(
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GuiaComercialList(
+                            name: name,
+                          ),
+                        ),
+                      );
+                    },
                     child: Container(
                       height: 100,
                       decoration: BoxDecoration(
                           border: Border.all(
                               color: const Color.fromARGB(255, 25, 60, 83),
-                              width: 1)),
+                              width: 2)),
                       child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -94,12 +108,16 @@ class ButtonsTeg extends StatelessWidget {
                           Text(
                             'Guia',
                             style: TextStyle(
-                                color: Color.fromARGB(255, 25, 60, 83)),
+                                color: Color.fromARGB(255, 25, 60, 83),
+                                fontWeight: (FontWeight.bold),
+                                fontSize: 18),
                           ),
                           Text(
                             'Comercial',
                             style: TextStyle(
-                                color: Color.fromARGB(255, 25, 60, 83)),
+                                color: Color.fromARGB(255, 25, 60, 83),
+                                fontWeight: (FontWeight.bold),
+                                fontSize: 18),
                           )
                         ],
                       ),
@@ -117,34 +135,60 @@ class ButtonsTeg extends StatelessWidget {
               children: [
                 Expanded(
                   child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => TurismList(
-                                  name: name,
-                                )),
-                      );
-                    },
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: Container(
+                        height: 100,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 25, 60, 83),
+                              width: 2),
+                        ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.compare_arrows,
+                              size: 60,
+                              color: Color.fromARGB(255, 25, 60, 83),
+                            ),
+                            Text(
+                              'Turismo',
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 25, 60, 83),
+                                  fontWeight: (FontWeight.bold),
+                                  fontSize: 18),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
                     child: Container(
                       height: 100,
                       decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 25, 60, 83),
-                            width: 1),
-                      ),
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 25, 60, 83),
+                              width: 2)),
                       child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.compare_arrows,
+                            Icons.calendar_month,
                             size: 60,
                             color: Color.fromARGB(255, 25, 60, 83),
                           ),
                           Text(
-                            'Turismo',
+                            'Eventos',
                             style: TextStyle(
-                                color: Color.fromARGB(255, 25, 60, 83)),
+                                color: Color.fromARGB(255, 25, 60, 83),
+                                fontWeight: (FontWeight.bold),
+                                fontSize: 18),
                           )
                         ],
                       ),
@@ -153,51 +197,43 @@ class ButtonsTeg extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 Expanded(
-                  child: Container(
-                    height: 100,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 25, 60, 83),
-                            width: 1)),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.calendar_month,
-                          size: 60,
-                          color: Color.fromARGB(255, 25, 60, 83),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GuiaComercialList(
+                            name: name,
+                          ),
                         ),
-                        Text(
-                          'Eventos',
-                          style:
-                              TextStyle(color: Color.fromARGB(255, 25, 60, 83)),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Container(
-                    height: 100,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 25, 60, 83),
-                            width: 1)),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.place,
-                          size: 60,
-                          color: Color.fromARGB(255, 25, 60, 83),
+                      );
+                    },
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: Container(
+                        height: 100,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: const Color.fromARGB(255, 25, 60, 83),
+                                width: 2)),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.place,
+                              size: 60,
+                              color: Color.fromARGB(255, 25, 60, 83),
+                            ),
+                            Text(
+                              'Guia Comercial',
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 25, 60, 83),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            )
+                          ],
                         ),
-                        Text(
-                          'Guia Comercial',
-                          style:
-                              TextStyle(color: Color.fromARGB(255, 25, 60, 83)),
-                        )
-                      ],
+                      ),
                     ),
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litoral_na_mao/colors.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -16,7 +17,7 @@ class CustomDrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 25, 60, 83),
+              color: ColorPalette.blue,
             ),
             child: Container(
               margin: const EdgeInsets.only(bottom: 20.0),
@@ -29,7 +30,7 @@ class CustomDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(
               Icons.home_outlined,
-              color: Color.fromARGB(255, 235, 99, 48),
+              color: ColorPalette.orange,
             ),
             title: const Text('Início'),
             onTap: onCloseDrawer,
@@ -37,7 +38,7 @@ class CustomDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(
               Icons.person_outlined,
-              color: Color.fromARGB(255, 235, 99, 48),
+              color: ColorPalette.orange,
             ),
             title: const Text('Quem somos'),
             onTap: () {},
@@ -45,7 +46,7 @@ class CustomDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(
               Icons.privacy_tip_outlined,
-              color: Color.fromARGB(255, 235, 99, 48),
+              color: ColorPalette.orange,
             ),
             title: const Text('Privacidade'),
             onTap: () {},
@@ -53,7 +54,7 @@ class CustomDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(
               Icons.close_outlined,
-              color: Color.fromARGB(255, 235, 99, 48),
+              color: ColorPalette.orange,
             ),
             title: const Text('Fechar'),
             onTap: onCloseDrawer,

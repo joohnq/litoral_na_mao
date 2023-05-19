@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litoral_na_mao/colors.dart';
 
 class FormSearchBar extends StatelessWidget {
   const FormSearchBar({Key? key}) : super(key: key);
@@ -17,10 +18,10 @@ class FormSearchBar extends StatelessWidget {
                 child: TextFormField(
                   decoration: const InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: ColorPalette.white,
                     hintText: 'Digite algo...',
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.zero,
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
                     ),
                   ),
                 ),
@@ -32,7 +33,7 @@ class FormSearchBar extends StatelessWidget {
                 width: 30, // Largura fixa do ícone
                 child: Icon(
                   Icons.search,
-                  color: Colors.white,
+                  color: ColorPalette.white,
                 ),
               ),
             ],
