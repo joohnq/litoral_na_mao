@@ -1,6 +1,10 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:litoral_na_mao/colors.dart';
+import 'package:litoral_na_mao/pages/anuncie.dart';
+import 'package:litoral_na_mao/pages/privacidade.dart';
+import 'package:litoral_na_mao/pages/quem_somos.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ButtonsQap extends StatelessWidget {
@@ -22,29 +26,103 @@ class ButtonsQap extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                    backgroundColor: const Color.fromARGB(255, 8, 183, 176),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const QuemSomos(),
+                      ),
+                    );
+                  },
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Container(
+                      height: 30,
+                      decoration:
+                          const BoxDecoration(color: ColorPalette.green),
+                      child: const Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Quem Somos',
+                            style: TextStyle(
+                              color: ColorPalette.white,
+                              fontWeight: (FontWeight.bold),
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  onPressed: () => print('hello'),
-                  child: const Text('Quem Somos'),
                 ),
                 const SizedBox(height: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 8, 183, 176),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Anuncie(),
+                      ),
+                    );
+                  },
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Container(
+                      height: 30,
+                      decoration:
+                          const BoxDecoration(color: ColorPalette.green),
+                      child: const Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Anuncie',
+                            style: TextStyle(
+                              color: ColorPalette.white,
+                              fontWeight: (FontWeight.bold),
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  onPressed: () => print('hello'),
-                  child: const Text('Anuncie'),
                 ),
                 const SizedBox(height: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 8, 183, 176),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Privacidade(),
+                      ),
+                    );
+                  },
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Container(
+                      height: 30,
+                      decoration:
+                          const BoxDecoration(color: ColorPalette.green),
+                      child: const Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Privacidade',
+                            style: TextStyle(
+                              color: ColorPalette.white,
+                              fontWeight: (FontWeight.bold),
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  onPressed: () => print('hello'),
-                  child: const Text('Privacidade'),
                 ),
               ],
             ),
@@ -59,33 +137,107 @@ class ButtonsQap extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                      backgroundColor: const Color.fromARGB(255, 8, 183, 176),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const QuemSomos(),
+                        ),
+                      );
+                    },
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: Container(
+                        height: 30,
+                        decoration:
+                            const BoxDecoration(color: ColorPalette.green),
+                        child: const Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Quem Somos',
+                              style: TextStyle(
+                                color: ColorPalette.white,
+                                fontWeight: (FontWeight.bold),
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    onPressed: () => print('hello'),
-                    child: const Text('Quem Somos'),
                   ),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 8, 183, 176),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Anuncie(),
+                        ),
+                      );
+                    },
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: Container(
+                        height: 30,
+                        decoration:
+                            const BoxDecoration(color: ColorPalette.green),
+                        child: const Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Anuncie',
+                              style: TextStyle(
+                                color: ColorPalette.white,
+                                fontWeight: (FontWeight.bold),
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    onPressed: () => print('hello'),
-                    child: const Text('Anuncie'),
                   ),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 8, 183, 176),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Privacidade(),
+                        ),
+                      );
+                    },
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: Container(
+                        height: 30,
+                        decoration:
+                            const BoxDecoration(color: ColorPalette.green),
+                        child: const Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Privacidade',
+                              style: TextStyle(
+                                color: ColorPalette.white,
+                                fontWeight: (FontWeight.bold),
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    onPressed: () => print('hello'),
-                    child: const Text('Privacidade'),
                   ),
                 ),
               ],

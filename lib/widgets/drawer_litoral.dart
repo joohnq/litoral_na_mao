@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/colors.dart';
+import 'package:litoral_na_mao/pages/privacidade.dart';
+import 'package:litoral_na_mao/pages/quem_somos.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -41,7 +43,14 @@ class CustomDrawer extends StatelessWidget {
               color: ColorPalette.orange,
             ),
             title: const Text('Quem somos'),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const QuemSomos(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(
@@ -49,7 +58,14 @@ class CustomDrawer extends StatelessWidget {
               color: ColorPalette.orange,
             ),
             title: const Text('Privacidade'),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Privacidade(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(
