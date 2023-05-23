@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/components/buttons_qap.dart';
-import 'package:litoral_na_mao/components/carousel.dart';
-import 'package:litoral_na_mao/components/cities.dart';
-import 'package:litoral_na_mao/components/drawer_litoral.dart';
-import 'package:litoral_na_mao/components/header.dart';
+import 'package:litoral_na_mao/widgets/buttons_qap.dart';
+import 'package:litoral_na_mao/widgets/carousel.dart';
+import 'package:litoral_na_mao/widgets/cities.dart';
+import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
+import 'package:litoral_na_mao/widgets/header.dart';
 
 void main() {
   runApp(const LitoralNaMao());

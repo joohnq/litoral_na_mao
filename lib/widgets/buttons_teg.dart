@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/colors.dart';
 import 'package:litoral_na_mao/pages/guia_comercial_list.dart';
+import 'package:litoral_na_mao/pages/turism_list.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ButtonsTeg extends StatelessWidget {
@@ -23,6 +24,16 @@ class ButtonsTeg extends StatelessWidget {
               children: [
                 Expanded(
                   child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TurismList(
+                            nameCity: name,
+                          ),
+                        ),
+                      );
+                    },
                     child: Container(
                       height: 100,
                       decoration: BoxDecoration(
@@ -135,6 +146,16 @@ class ButtonsTeg extends StatelessWidget {
               children: [
                 Expanded(
                   child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TurismList(
+                            nameCity: name,
+                          ),
+                        ),
+                      );
+                    },
                     child: MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: Container(

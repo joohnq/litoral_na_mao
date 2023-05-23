@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/colors.dart';
-import 'package:litoral_na_mao/components/buttons_qap.dart';
-import 'package:litoral_na_mao/components/buttons_teg.dart';
-import 'package:litoral_na_mao/components/carousel.dart';
-import 'package:litoral_na_mao/components/drawer_litoral.dart';
-import 'package:litoral_na_mao/components/header.dart';
-import 'package:litoral_na_mao/components/form_search_bar.dart';
+import 'package:litoral_na_mao/widgets/buttons_qap.dart';
+import 'package:litoral_na_mao/widgets/buttons_teg.dart';
+import 'package:litoral_na_mao/widgets/carousel.dart';
+import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
+import 'package:litoral_na_mao/widgets/header.dart';
+import 'package:litoral_na_mao/widgets/form_search_bar.dart';
 
 class CitieDetail extends StatelessWidget {
   const CitieDetail({

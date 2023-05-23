@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:litoral_na_mao/components/citie.dart';
+import 'package:litoral_na_mao/widgets/citie.dart';
 
 class Cities extends StatelessWidget {
   const Cities({super.key});

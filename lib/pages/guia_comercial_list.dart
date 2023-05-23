@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/components/drawer_litoral.dart';
-import 'package:litoral_na_mao/components/form_search_bar.dart';
-import 'package:litoral_na_mao/components/header.dart';
-import 'package:litoral_na_mao/components/guia_comercial_point.dart';
+import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
+import 'package:litoral_na_mao/widgets/form_search_bar.dart';
+import 'package:litoral_na_mao/widgets/header.dart';
+import 'package:litoral_na_mao/widgets/guia_comercial_point.dart';
 
 class GuiaComercialList extends StatelessWidget {
   const GuiaComercialList({Key? key, required this.name}) : super(key: key);
