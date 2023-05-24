@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/pages/turism_item_page.dart';
+import 'package:litoral_na_mao/pages/turism_item.dart';
 
 class TurismPoint extends StatelessWidget {
   const TurismPoint(

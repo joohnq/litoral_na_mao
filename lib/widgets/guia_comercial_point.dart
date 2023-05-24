@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/colors.dart';
-import 'package:litoral_na_mao/pages/guia_comercial_item_page.dart';
+import 'package:litoral_na_mao/pages/guia_comercial_item.dart';
 
 class GuiaComercialPoint extends StatefulWidget {
   const GuiaComercialPoint({Key? key, required this.name}) : super(key: key);
@@ -101,18 +101,19 @@ class SecondWidget extends StatelessWidget {
       : super(key: key);
 
   final VoidCallback onToggle;
-  final String name;
+  final String? name;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onToggle,
       onLongPress: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) => GuiaComercialItemPage(namePoint: name),
-          ),
+          '/guia_comercial_item',
+          arguments: {
+            'namePoint': name ?? '',
+          },
         );
       },
       child: Container(

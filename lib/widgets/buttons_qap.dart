@@ -2,9 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/colors.dart';
-import 'package:litoral_na_mao/pages/anuncie.dart';
-import 'package:litoral_na_mao/pages/privacidade.dart';
-import 'package:litoral_na_mao/pages/quem_somos.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ButtonsQap extends StatelessWidget {
@@ -28,12 +25,7 @@ class ButtonsQap extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const QuemSomos(),
-                      ),
-                    );
+                    Navigator.of(context).pushReplacementNamed('/quemsomos');
                   },
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
@@ -61,12 +53,7 @@ class ButtonsQap extends StatelessWidget {
                 const SizedBox(height: 10),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Anuncie(),
-                      ),
-                    );
+                    Navigator.of(context).pushReplacementNamed('/anuncie');
                   },
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
@@ -94,12 +81,7 @@ class ButtonsQap extends StatelessWidget {
                 const SizedBox(height: 10),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Privacidade(),
-                      ),
-                    );
+                    Navigator.of(context).pushReplacementNamed('/privacidade');
                   },
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
@@ -139,12 +121,7 @@ class ButtonsQap extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const QuemSomos(),
-                        ),
-                      );
+                      Navigator.of(context).pushReplacementNamed('/quemsomos');
                     },
                     child: MouseRegion(
                       cursor: SystemMouseCursors.click,
@@ -174,12 +151,7 @@ class ButtonsQap extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Anuncie(),
-                        ),
-                      );
+                      Navigator.of(context).pushReplacementNamed('/anuncie');
                     },
                     child: MouseRegion(
                       cursor: SystemMouseCursors.click,
@@ -209,12 +181,8 @@ class ButtonsQap extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Privacidade(),
-                        ),
-                      );
+                      Navigator.of(context)
+                          .pushReplacementNamed('/privacidade');
                     },
                     child: MouseRegion(
                       cursor: SystemMouseCursors.click,

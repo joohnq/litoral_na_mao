@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../pages/citie_detail.dart';
 
 class Citie extends StatelessWidget {
   const Citie({Key? key, required this.name, required this.image})
@@ -12,10 +11,13 @@ class Citie extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-              builder: (context) => CitieDetail(name: name, image: image)),
+          '/city_detail',
+          arguments: {
+            'nameCity': name,
+            'image': image,
+          },
         );
       },
       child: MouseRegion(

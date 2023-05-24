@@ -47,7 +47,7 @@ class GuiaComercialItemPage extends StatelessWidget {
                       ),
                     ),
                     const Carousel(
-                      images: ['caraguatatuba.jpg', 'ilhabela.jpg'],
+                      images: ['caraguatatuba.jpg', 'ilhabela.jpg'],  carouselText: []
                     ),
                     Column(
                       children: [

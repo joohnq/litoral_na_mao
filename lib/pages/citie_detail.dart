@@ -10,12 +10,13 @@ import 'package:litoral_na_mao/widgets/form_search_bar.dart';
 class CitieDetail extends StatelessWidget {
   const CitieDetail({
     Key? key,
-    required this.name,
+    required this.nameCity,
     required this.image,
   }) : super(key: key);
 
-  final String name;
-  final String image;
+  // final dynamic arguments;
+  final String? nameCity;
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +32,14 @@ class CitieDetail extends StatelessWidget {
           children: [
             const Header(),
             const FormSearchBar(),
-            Carousel(images: [image]),
+            Carousel(
+                images: [image ?? ''],
+                carouselText: ['Seu guia', 'definitivo de', nameCity ?? '']),
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Center(
                 child: Text(
-                  name,
+                  nameCity ?? '',
                   style: const TextStyle(
                       color: ColorPalette.green,
                       fontWeight: FontWeight.bold,
@@ -45,7 +48,7 @@ class CitieDetail extends StatelessWidget {
               ),
             ),
             ButtonsTeg(
-              name: name,
+              name: nameCity ?? '',
             ),
             const ButtonsQap(),
           ],
