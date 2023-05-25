@@ -7,16 +7,15 @@ import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
 import 'package:litoral_na_mao/widgets/header.dart';
 import 'package:litoral_na_mao/widgets/form_search_bar.dart';
 
-class CitieDetail extends StatelessWidget {
-  const CitieDetail({
+class CityDetail extends StatelessWidget {
+  const CityDetail({
     Key? key,
     required this.nameCity,
-    required this.image,
+    // required this.image,
   }) : super(key: key);
 
-  // final dynamic arguments;
   final String? nameCity;
-  final String? image;
+  // final String? image;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class CitieDetail extends StatelessWidget {
             const Header(),
             const FormSearchBar(),
             Carousel(
-                images: [image ?? ''],
+                images: ['$nameCity.jpg'],
                 carouselText: ['Seu guia', 'definitivo de', nameCity ?? '']),
             Padding(
               padding: const EdgeInsets.only(top: 10),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/colors.dart';
+import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
 import 'package:litoral_na_mao/widgets/header.dart';
 
 class QuemSomos extends StatelessWidget {
@@ -7,7 +8,14 @@ class QuemSomos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
+    void closeDrawer() {
+      scaffoldKey.currentState!.closeEndDrawer();
+    }
+
     return Scaffold(
+      key: scaffoldKey,
       body: ListView(children: [
         const Header(),
         Center(
@@ -58,6 +66,7 @@ class QuemSomos extends StatelessWidget {
           ),
         ),
       ]),
+      endDrawer: CustomDrawer(onCloseDrawer: closeDrawer),
     );
   }
 }

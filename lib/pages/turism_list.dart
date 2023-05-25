@@ -6,7 +6,7 @@ import 'package:litoral_na_mao/widgets/turism_point.dart';
 class TurismList extends StatelessWidget {
   const TurismList({Key? key, required this.nameCity}) : super(key: key);
 
-  final String nameCity;
+  final String? nameCity;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class TurismList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     TurismPoint(
-                      nameCity: nameCity,
+                      nameCity: nameCity ?? '',
                       namePoint: 'Brava',
                       imagePoint: 'caraguatatuba.jpg',
                       descPoint: 'Description',

@@ -5,58 +5,34 @@ import 'package:litoral_na_mao/widgets/header.dart';
 import 'package:litoral_na_mao/widgets/guia_comercial_point.dart';
 
 class GuiaComercialList extends StatelessWidget {
-  const GuiaComercialList({Key? key, required this.name}) : super(key: key);
+  const GuiaComercialList({Key? key, required this.nameCity}) : super(key: key);
 
-  final String name;
+  final String? nameCity;
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
-    void closeDrawer() {
-      scaffoldKey.currentState!.closeEndDrawer();
-    }
-
     return Scaffold(
-        key: scaffoldKey,
-        body: ListView(
-          children: [
-            const Header(),
-            const FormSearchBar(),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: Wrap(children: [
-                  GuiaComercialPoint(name: name),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  GuiaComercialPoint(name: name),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  GuiaComercialPoint(name: name),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  GuiaComercialPoint(name: name),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  GuiaComercialPoint(name: name),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  GuiaComercialPoint(name: name),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  GuiaComercialPoint(name: name),
-                ]),
+      body: ListView(
+        children: [
+          const Header(),
+          const FormSearchBar(),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Wrap(
+                spacing: 10,
+                children: List.generate(
+                  10,
+                  (_) => GuiaComercialPoint(nameCity: nameCity ?? ''),
+                ),
               ),
-            )
-          ],
-        ),
-        endDrawer: CustomDrawer(onCloseDrawer: closeDrawer));
+            ),
+          ),
+        ],
+      ),
+      endDrawer: CustomDrawer(onCloseDrawer: () {
+        Scaffold.of(context).openEndDrawer();
+      }),
+    );
   }
 }

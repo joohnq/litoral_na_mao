@@ -1,13 +1,14 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:litoral_na_mao/colors.dart';
-import 'package:litoral_na_mao/pages/guia_comercial_item.dart';
 
 class GuiaComercialPoint extends StatefulWidget {
-  const GuiaComercialPoint({Key? key, required this.name}) : super(key: key);
+  const GuiaComercialPoint({Key? key, required this.nameCity})
+      : super(key: key);
 
-  final String name;
+  final String? nameCity;
 
   @override
   State<GuiaComercialPoint> createState() => GuiaComercialPointState();
@@ -45,7 +46,7 @@ class GuiaComercialPointState extends State<GuiaComercialPoint> {
               : SecondWidget(
                   key: const ValueKey(2),
                   onToggle: toggleWidget,
-                  name: widget.name,
+                  nameCity: widget.nameCity,
                 ),
         ),
       ),
@@ -97,24 +98,22 @@ class FirstWidget extends StatelessWidget {
 }
 
 class SecondWidget extends StatelessWidget {
-  const SecondWidget({Key? key, required this.onToggle, required this.name})
+  const SecondWidget({Key? key, required this.onToggle, required this.nameCity})
       : super(key: key);
 
   final VoidCallback onToggle;
-  final String? name;
+  final String? nameCity;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onToggle,
       onLongPress: () {
-        Navigator.pushNamed(
-          context,
-          '/guia_comercial_item',
-          arguments: {
-            'namePoint': name ?? '',
-          },
-        );
+        Future.delayed(Duration.zero, () {
+          final routeF =
+              '/$nameCity/guia_comercial_list/guia_comercial_item/:namePoint';
+          context.go(routeF);
+        });
       },
       child: Container(
         decoration: const BoxDecoration(

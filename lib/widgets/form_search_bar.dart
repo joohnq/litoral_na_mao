@@ -8,20 +8,23 @@ class FormSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-      color: const Color.fromARGB(255, 25, 60, 83),
+      color: ColorPalette.blue,
       child: Center(
         child: Container(
           constraints: const BoxConstraints(maxWidth: 1000),
           child: Row(
             children: [
               Expanded(
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    filled: true,
-                    fillColor: ColorPalette.white,
-                    hintText: 'Digite algo...',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                child: SizedBox(
+                  height: 50,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      filled: true,
+                      fillColor: ColorPalette.white,
+                      hintText: 'Digite algo...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                      ),
                     ),
                   ),
                 ),

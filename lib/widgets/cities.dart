@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:litoral_na_mao/widgets/citie.dart';
+import 'package:litoral_na_mao/widgets/city.dart';
 
 class Cities extends StatelessWidget {
   const Cities({super.key});
@@ -17,10 +17,10 @@ class Cities extends StatelessWidget {
         if (screenSize.width < smallBreakpoint) {
           return const Column(
             children: [
-              Citie(name: 'Caraguatatuba', image: 'caraguatatuba.jpg'),
-              Citie(name: 'Ilha Bela', image: 'ilhabela.jpg'),
-              Citie(name: 'São Sebastião', image: 'saosebastiao.jpg'),
-              Citie(name: 'Ubatuba', image: 'ubatuba.jpg'),
+              City(name: 'Caraguatatuba', image: 'caraguatatuba.jpg'),
+              City(name: 'Ilha Bela', image: 'ilhabela.jpg'),
+              City(name: 'São Sebastião', image: 'saosebastiao.jpg'),
+              City(name: 'Ubatuba', image: 'ubatuba.jpg'),
             ],
           );
         } else if (screenSize.width < mediumBreakpoint) {
@@ -30,16 +30,16 @@ class Cities extends StatelessWidget {
               Flexible(
                 child: Column(
                   children: [
-                    Citie(name: 'Caraguatatuba', image: 'caraguatatuba.jpg'),
-                    Citie(name: 'Ilha Bela', image: 'ilhabela.jpg'),
+                    City(name: 'Caraguatatuba', image: 'caraguatatuba.jpg'),
+                    City(name: 'Ilha Bela', image: 'ilhabela.jpg'),
                   ],
                 ),
               ),
               Flexible(
                 child: Column(
                   children: [
-                    Citie(name: 'São Sebastião', image: 'saosebastiao.jpg'),
-                    Citie(name: 'Ubatuba', image: 'ubatuba.jpg'),
+                    City(name: 'São Sebastião', image: 'saosebastiao.jpg'),
+                    City(name: 'Ubatuba', image: 'ubatuba.jpg'),
                   ],
                 ),
               ),
@@ -54,10 +54,10 @@ class Cities extends StatelessWidget {
                 child: Wrap(
                   alignment: WrapAlignment.center,
                   children: [
-                    Citie(name: 'Caraguatatuba', image: 'caraguatatuba.jpg'),
-                    Citie(name: 'Ilha Bela', image: 'ilhabela.jpg'),
-                    Citie(name: 'São Sebastião', image: 'saosebastiao.jpg'),
-                    Citie(name: 'Ubatuba', image: 'ubatuba.jpg'),
+                    City(name: 'Caraguatatuba', image: 'caraguatatuba.jpg'),
+                    City(name: 'Ilha Bela', image: 'ilhabela.jpg'),
+                    City(name: 'São Sebastião', image: 'saosebastiao.jpg'),
+                    City(name: 'Ubatuba', image: 'ubatuba.jpg'),
                   ],
                 ),
               ),
@@ -73,10 +73,10 @@ class Cities extends StatelessWidget {
                   child: Wrap(
                     alignment: WrapAlignment.spaceBetween,
                     children: [
-                      Citie(name: 'Caraguatatuba', image: 'caraguatatuba.jpg'),
-                      Citie(name: 'Ilha Bela', image: 'ilhabela.jpg'),
-                      Citie(name: 'São Sebastião', image: 'saosebastiao.jpg'),
-                      Citie(name: 'Ubatuba', image: 'ubatuba.jpg'),
+                      City(name: 'Caraguatatuba', image: 'caraguatatuba.jpg'),
+                      City(name: 'Ilha Bela', image: 'ilhabela.jpg'),
+                      City(name: 'São Sebastião', image: 'saosebastiao.jpg'),
+                      City(name: 'Ubatuba', image: 'ubatuba.jpg'),
                     ],
                   ),
                 ),

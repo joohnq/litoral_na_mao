@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class Citie extends StatelessWidget {
-  const Citie({Key? key, required this.name, required this.image})
+class City extends StatelessWidget {
+  const City({Key? key, required this.name, required this.image})
       : super(key: key);
 
   final String name;
@@ -11,14 +12,7 @@ class Citie extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/city_detail',
-          arguments: {
-            'nameCity': name,
-            'image': image,
-          },
-        );
+        context.go('/$name');
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
