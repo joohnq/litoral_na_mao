@@ -24,8 +24,7 @@ class TurismList extends StatelessWidget {
                   children: [
                     TurismPoint(
                       nameCity: nameCity ?? '',
-                      namePoint: 'Brava',
-                      imagePoint: 'caraguatatuba.jpg',
+                      namePoint: 'brava',
                       descPoint: 'Description',
                     )
                   ]),

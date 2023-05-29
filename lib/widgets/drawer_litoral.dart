@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:litoral_na_mao/colors.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -34,10 +35,7 @@ class CustomDrawer extends StatelessWidget {
             ),
             title: const Text('Início'),
             onTap: () {
-              Navigator.pushNamed(
-                context,
-                '/',
-              );
+              context.go('/');
             },
           ),
           ListTile(
@@ -47,10 +45,7 @@ class CustomDrawer extends StatelessWidget {
             ),
             title: const Text('Quem somos'),
             onTap: () {
-              Navigator.pushNamed(
-                context,
-                '/quem_somos',
-              );
+              context.go('/quemsomos');
             },
           ),
           ListTile(
@@ -60,10 +55,7 @@ class CustomDrawer extends StatelessWidget {
             ),
             title: const Text('Privacidade'),
             onTap: () {
-              Navigator.pushNamed(
-                context,
-                '/privacidade',
-              );
+              context.go('/privacidade');
             },
           ),
           ListTile(

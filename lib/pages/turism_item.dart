@@ -10,13 +10,11 @@ class TurismItemPage extends StatelessWidget {
     Key? key,
     required this.nameCity,
     required this.namePoint,
-    required this.image,
     required this.desc,
   }) : super(key: key);
 
-  final String nameCity;
-  final String namePoint;
-  final String image;
+  final String? nameCity;
+  final String? namePoint;
   final String desc;
 
   @override
@@ -44,7 +42,7 @@ class TurismItemPage extends StatelessWidget {
                           fontSize: isSmallScreen ? 28 : 40,
                         );
                         return Text(
-                          'Turismo - $nameCity',
+                          'Turismo - ${nameCity![0].toUpperCase() + nameCity!.substring(1)}',
                           style: textStyle,
                         );
                       },
@@ -61,7 +59,7 @@ class TurismItemPage extends StatelessWidget {
                       return Padding(
                         padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
                         child: Text(
-                          namePoint,
+                          namePoint![0].toUpperCase() + namePoint!.substring(1),
                           style: textStyle,
                         ),
                       );
@@ -70,7 +68,7 @@ class TurismItemPage extends StatelessWidget {
                   Container(
                     constraints: const BoxConstraints(maxWidth: 800),
                     child: Image.asset(
-                      'assets/images/$image',
+                      'assets/images/caraguatatuba.jpg',
                       height: 400,
                       fit: BoxFit.cover,
                     ),

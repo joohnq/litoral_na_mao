@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:litoral_na_mao/colors.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -21,7 +22,7 @@ class ButtonsQap extends StatelessWidget {
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    buildButton(context, 'Quem Somos', '/quem_somos'),
+                    buildButton(context, 'Quem Somos', '/quemsomos'),
                     const SizedBox(height: 10),
                     buildButton(context, 'Anuncie', '/anuncie'),
                     const SizedBox(height: 10),
@@ -32,7 +33,7 @@ class ButtonsQap extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
-                      child: buildButton(context, 'Quem Somos', '/quem_somos'),
+                      child: buildButton(context, 'Quem Somos', '/quemsomos'),
                     ),
                     const SizedBox(width: 10),
                     Expanded(
@@ -53,7 +54,7 @@ class ButtonsQap extends StatelessWidget {
   GestureDetector buildButton(BuildContext context, String text, String route) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushReplacementNamed(route);
+        context.go(route);
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,

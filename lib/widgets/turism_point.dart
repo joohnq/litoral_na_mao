@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/pages/turism_item.dart';
+import 'package:go_router/go_router.dart';
 
 class TurismPoint extends StatelessWidget {
   const TurismPoint(
       {Key? key,
       required this.namePoint,
       required this.nameCity,
-      required this.imagePoint,
       required this.descPoint})
       : super(key: key);
 
   final String namePoint;
   final String nameCity;
-  final String imagePoint;
   final String descPoint;
 
   @override
@@ -28,22 +26,12 @@ class TurismPoint extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => TurismItemPage(
-                nameCity: nameCity,
-                namePoint: namePoint,
-                image: imagePoint,
-                desc: descPoint,
-              ),
-            ),
-          );
+          context.go('/$nameCity/turism_list/$namePoint');
         },
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Text(
-            namePoint,
+            namePoint[0].toUpperCase() + namePoint.substring(1),
             style: const TextStyle(fontSize: 20),
           ),
         ),

@@ -17,10 +17,10 @@ class Cities extends StatelessWidget {
         if (screenSize.width < smallBreakpoint) {
           return const Column(
             children: [
-              City(name: 'Caraguatatuba', image: 'caraguatatuba.jpg'),
-              City(name: 'Ilha Bela', image: 'ilhabela.jpg'),
-              City(name: 'São Sebastião', image: 'saosebastiao.jpg'),
-              City(name: 'Ubatuba', image: 'ubatuba.jpg'),
+              City(name: 'caraguatatuba'),
+              City(name: 'ilhabela'),
+              City(name: 'saosebastiao'),
+              City(name: 'ubatuba'),
             ],
           );
         } else if (screenSize.width < mediumBreakpoint) {
@@ -30,16 +30,16 @@ class Cities extends StatelessWidget {
               Flexible(
                 child: Column(
                   children: [
-                    City(name: 'Caraguatatuba', image: 'caraguatatuba.jpg'),
-                    City(name: 'Ilha Bela', image: 'ilhabela.jpg'),
+                    City(name: 'caraguatatuba'),
+                    City(name: 'ilhabela'),
                   ],
                 ),
               ),
               Flexible(
                 child: Column(
                   children: [
-                    City(name: 'São Sebastião', image: 'saosebastiao.jpg'),
-                    City(name: 'Ubatuba', image: 'ubatuba.jpg'),
+                    City(name: 'saosebastiao'),
+                    City(name: 'ubatuba'),
                   ],
                 ),
               ),
@@ -54,10 +54,10 @@ class Cities extends StatelessWidget {
                 child: Wrap(
                   alignment: WrapAlignment.center,
                   children: [
-                    City(name: 'Caraguatatuba', image: 'caraguatatuba.jpg'),
-                    City(name: 'Ilha Bela', image: 'ilhabela.jpg'),
-                    City(name: 'São Sebastião', image: 'saosebastiao.jpg'),
-                    City(name: 'Ubatuba', image: 'ubatuba.jpg'),
+                    City(name: 'caraguatatuba'),
+                    City(name: 'ilhabela'),
+                    City(name: 'saosebastiao'),
+                    City(name: 'ubatuba'),
                   ],
                 ),
               ),
@@ -73,10 +73,10 @@ class Cities extends StatelessWidget {
                   child: Wrap(
                     alignment: WrapAlignment.spaceBetween,
                     children: [
-                      City(name: 'Caraguatatuba', image: 'caraguatatuba.jpg'),
-                      City(name: 'Ilha Bela', image: 'ilhabela.jpg'),
-                      City(name: 'São Sebastião', image: 'saosebastiao.jpg'),
-                      City(name: 'Ubatuba', image: 'ubatuba.jpg'),
+                      City(name: 'caraguatatuba'),
+                      City(name: 'ilhabela'),
+                      City(name: 'saosebastiao'),
+                      City(name: 'ubatuba'),
                     ],
                   ),
                 ),

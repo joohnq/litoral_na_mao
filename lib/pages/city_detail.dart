@@ -11,11 +11,9 @@ class CityDetail extends StatelessWidget {
   const CityDetail({
     Key? key,
     required this.nameCity,
-    // required this.image,
   }) : super(key: key);
 
   final String? nameCity;
-  // final String? image;
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +31,12 @@ class CityDetail extends StatelessWidget {
             const FormSearchBar(),
             Carousel(
                 images: ['$nameCity.jpg'],
-                carouselText: ['Seu guia', 'definitivo de', nameCity ?? '']),
+                carouselText: ['Seu guia', 'definitivo de', nameCity!]),
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Center(
                 child: Text(
-                  nameCity ?? '',
+                  nameCity![0].toUpperCase() + nameCity!.substring(1),
                   style: const TextStyle(
                       color: ColorPalette.green,
                       fontWeight: FontWeight.bold,

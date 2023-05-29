@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class City extends StatelessWidget {
-  const City({Key? key, required this.name, required this.image})
-      : super(key: key);
+  const City({Key? key, required this.name}) : super(key: key);
 
   final String name;
-  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class City extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(bottom: 10),
               child: Text(
-                name,
+                name[0].toUpperCase() + name.substring(1),
                 style: const TextStyle(
                   fontSize: 22,
                 ),
@@ -33,7 +31,7 @@ class City extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 image: DecorationImage(
-                    image: AssetImage('assets/images/$image'),
+                    image: AssetImage('assets/images/$name.jpg'),
                     fit: BoxFit.cover),
               ),
             )

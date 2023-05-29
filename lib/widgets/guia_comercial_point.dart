@@ -109,11 +109,7 @@ class SecondWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onToggle,
       onLongPress: () {
-        Future.delayed(Duration.zero, () {
-          final routeF =
-              '/$nameCity/guia_comercial_list/guia_comercial_item/:namePoint';
-          context.go(routeF);
-        });
+        context.go('/$nameCity/guia_comercial_list/$nameCity');
       },
       child: Container(
         decoration: const BoxDecoration(
