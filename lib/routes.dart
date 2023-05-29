@@ -1,13 +1,13 @@
 import 'package:go_router/go_router.dart';
-import 'package:litoral_na_mao/pages/anuncie.dart';
-import 'package:litoral_na_mao/pages/city_detail.dart';
-import 'package:litoral_na_mao/pages/guia_comercial_item.dart';
-import 'package:litoral_na_mao/pages/guia_comercial_list.dart';
-import 'package:litoral_na_mao/pages/home.dart';
-import 'package:litoral_na_mao/pages/privacidade.dart';
-import 'package:litoral_na_mao/pages/quem_somos.dart';
-import 'package:litoral_na_mao/pages/turism_item.dart';
-import 'package:litoral_na_mao/pages/turism_list.dart';
+import 'package:litoral_na_mao/pages/Anuncie/anuncie.dart';
+import 'package:litoral_na_mao/pages/Citie/city_detail.dart';
+import 'package:litoral_na_mao/pages/GuiaComercial/guia_comercial_item.dart';
+import 'package:litoral_na_mao/pages/GuiaComercial/guia_comercial_list.dart';
+import 'package:litoral_na_mao/pages/Home/home.dart';
+import 'package:litoral_na_mao/pages/Privacidade/privacidade.dart';
+import 'package:litoral_na_mao/pages/QuemSomos/quem_somos.dart';
+import 'package:litoral_na_mao/pages/Turism/turism_item.dart';
+import 'package:litoral_na_mao/pages/Turism/turism_list.dart';
 
 final routes = GoRouter(
   initialLocation: '/',

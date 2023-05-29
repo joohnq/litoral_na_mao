@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
-import 'package:litoral_na_mao/widgets/form_search_bar.dart';
-import 'package:litoral_na_mao/widgets/header.dart';
-import 'package:litoral_na_mao/widgets/guia_comercial_point.dart';
+import 'package:litoral_na_mao/widgets/Drawer/drawer_litoral.dart';
+import 'package:litoral_na_mao/widgets/FormSearch/form_search_bar.dart';
+import 'package:litoral_na_mao/widgets/Header/header.dart';
+import 'package:litoral_na_mao/widgets/GuiaComercial/guia_comercial_point.dart';
 
 class GuiaComercialList extends StatelessWidget {
-  const GuiaComercialList({Key? key, required this.nameCity}) : super(key: key);
+  const GuiaComercialList({
+    Key? key,
+    required this.nameCity,
+  }) : super(key: key);
 
   final String? nameCity;
 
@@ -30,9 +33,11 @@ class GuiaComercialList extends StatelessWidget {
           ),
         ],
       ),
-      endDrawer: CustomDrawer(onCloseDrawer: () {
-        Scaffold.of(context).openEndDrawer();
-      }),
+      endDrawer: CustomDrawer(
+        onCloseDrawer: () {
+          Scaffold.of(context).openEndDrawer();
+        },
+      ),
     );
   }
 }

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/colors.dart';
-import 'package:litoral_na_mao/widgets/carousel.dart';
-import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
-import 'package:litoral_na_mao/widgets/form_search_bar.dart';
-import 'package:litoral_na_mao/widgets/header.dart';
-import 'package:litoral_na_mao/widgets/map.dart';
-import 'package:unicons/unicons.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:litoral_na_mao/widgets/Carousel/carousel.dart';
+import 'package:litoral_na_mao/widgets/Drawer/drawer_litoral.dart';
+import 'package:litoral_na_mao/widgets/FormSearch/form_search_bar.dart';
+import 'package:litoral_na_mao/widgets/Header/header.dart';
+import 'package:litoral_na_mao/widgets/Map/map.dart';
+import 'package:litoral_na_mao/widgets/SocialMediaIcon/social_media_section.dart';
 
 class GuiaComercialItemPage extends StatelessWidget {
   const GuiaComercialItemPage({Key? key, required this.namePoint})
@@ -31,7 +30,7 @@ class GuiaComercialItemPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 30),
                     child: Center(
                       child: Text(
-                        namePoint ?? '',
+                        namePoint!,
                         style: const TextStyle(
                           color: ColorPalette.green,
                           fontWeight: FontWeight.bold,
@@ -53,7 +52,7 @@ class GuiaComercialItemPage extends StatelessWidget {
                     icon: Icons.phone,
                     text: '(12) 3882-1585\n(12) 3882-1585',
                   ),
-                  _buildSocialMediaSection(),
+                  const SocialMediaSection(),
                   _buildInfoSection(
                     title: 'Horário de Funcionamento',
                     icon: Icons.access_time,
@@ -75,9 +74,11 @@ class GuiaComercialItemPage extends StatelessWidget {
           ),
         ],
       ),
-      endDrawer: CustomDrawer(onCloseDrawer: () {
-        Scaffold.of(context).openEndDrawer();
-      }),
+      endDrawer: CustomDrawer(
+        onCloseDrawer: () {
+          Scaffold.of(context).openEndDrawer();
+        },
+      ),
     );
   }
 
@@ -122,53 +123,6 @@ class GuiaComercialItemPage extends StatelessWidget {
             ),
           if (child != null) child,
         ],
-      ),
-    );
-  }
-
-  Widget _buildSocialMediaSection() {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 20),
-      child: Row(
-        children: [
-          _buildSocialMediaIcon(
-              UniconsLine.facebook_f, const Color.fromRGBO(59, 89, 151, 1)),
-          const SizedBox(
-            width: 10,
-          ),
-          _buildSocialMediaIcon(
-              UniconsLine.twitter, const Color.fromRGBO(65, 183, 216, 1)),
-          const SizedBox(
-            width: 10,
-          ),
-          _buildSocialMediaIcon(
-              UniconsLine.youtube, const Color.fromRGBO(178, 178, 178, 1)),
-          const SizedBox(
-            width: 10,
-          ),
-          _buildSocialMediaIcon(
-              Ionicons.logo_pinterest, const Color.fromRGBO(203, 32, 39, 1)),
-          const SizedBox(
-            width: 10,
-          ),
-          _buildSocialMediaIcon(
-              UniconsLine.instagram, const Color.fromRGBO(61, 115, 156, 1)),
-          const SizedBox(
-            width: 10,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSocialMediaIcon(IconData icon, Color color) {
-    return Container(
-      width: 50,
-      height: 50,
-      color: color,
-      child: Icon(
-        icon,
-        color: Colors.white,
       ),
     );
   }

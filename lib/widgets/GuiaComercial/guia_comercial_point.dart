@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:litoral_na_mao/colors.dart';
@@ -62,37 +60,40 @@ class FirstWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onToggle,
-      child: Row(children: [
-        Container(
-          width: 120,
-          height: 120,
-          decoration: const BoxDecoration(color: Colors.black12),
-        ),
-        const SizedBox(width: 10),
-        const Padding(
-          padding: EdgeInsets.only(top: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'CIDADE',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'Descrição',
-                style: TextStyle(color: ColorPalette.orange, fontSize: 18),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text(
-                  'Localização',
-                  style: TextStyle(color: ColorPalette.lightGray, fontSize: 18),
-                ),
-              )
-            ],
+      child: Row(
+        children: [
+          Container(
+            width: 120,
+            height: 120,
+            decoration: const BoxDecoration(color: Colors.black12),
           ),
-        )
-      ]),
+          const SizedBox(width: 10),
+          const Padding(
+            padding: EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'CIDADE',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'Descrição',
+                  style: TextStyle(color: ColorPalette.orange, fontSize: 18),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Text(
+                    'Localização',
+                    style:
+                        TextStyle(color: ColorPalette.lightGray, fontSize: 18),
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -165,13 +166,13 @@ class SecondWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   GestureDetector(
-                      onTap: () => print('hello'),
+                      onTap: () {},
                       child: const Icon(Icons.extension, size: 50)),
                   GestureDetector(
-                      onTap: () => print('hello'),
+                      onTap: () => {},
                       child: const Icon(Icons.extension, size: 50)),
                   GestureDetector(
-                      onTap: () => print('hello'),
+                      onTap: () => {},
                       child: const Icon(Icons.extension, size: 50)),
                 ],
               ),
