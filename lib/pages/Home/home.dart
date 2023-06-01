@@ -42,6 +42,16 @@ class _HomeState extends State<Home> {
       body: ListView(
         children: [
           const Header(),
+          const Carousel(images: [
+            'caraguatatuba.jpg',
+            'ilhabela.jpg',
+            'saosebastiao.jpg',
+            'ubatuba.jpg'
+          ], carouselText: [
+            'O guia',
+            'definitivo',
+            'da sua Cidade'
+          ]),
           AnimatedBuilder(
             animation:
                 Listenable.merge([store.isLoading, store.error, store.state]),
@@ -90,16 +100,6 @@ class _HomeState extends State<Home> {
               }
             },
           ),
-          const Carousel(images: [
-            'caraguatatuba.jpg',
-            'ilhabela.jpg',
-            'saosebastiao.jpg',
-            'ubatuba.jpg'
-          ], carouselText: [
-            'O guia',
-            'definitivo',
-            'da sua Cidade'
-          ]),
           const Cities(),
           const ButtonsQap()
         ],

@@ -15,7 +15,8 @@ class CityRepository implements ACityRepository {
 
   @override
   Future<List<CityModel>> getCities() async {
-    final response = await client.get(url: 'https://api.litoral.com');
+    final response =
+        await client.get(url: 'https://api-litoral.vercel.app/api/cities');
 
     if (response.statusCode == 200) {
       final List<CityModel> cities = [];

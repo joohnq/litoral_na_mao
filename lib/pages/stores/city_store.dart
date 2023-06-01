@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/app/data/http/exceptions.dart';
 import 'package:litoral_na_mao/app/data/models/city_model.dart';
@@ -23,6 +25,7 @@ class CityStore {
       state.value = result;
     } on NotFoundException catch (e) {
       error.value = e.message;
+      print(error.value);
     } catch (e) {
       error.value = e.toString();
     }

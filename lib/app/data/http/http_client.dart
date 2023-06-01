@@ -7,7 +7,7 @@ abstract class AHttpClient {
 class HttpClient implements AHttpClient {
   final client = http.Client();
   @override
-  Future get({required String url}) {
-    throw UnimplementedError();
+  Future get({required String url}) async {
+    return await client.get(Uri.parse(url));
   }
 }
