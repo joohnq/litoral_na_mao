@@ -6,8 +6,8 @@ import 'package:litoral_na_mao/pages/GuiaComercial/guia_comercial_list.dart';
 import 'package:litoral_na_mao/pages/Home/home.dart';
 import 'package:litoral_na_mao/pages/Privacidade/privacidade.dart';
 import 'package:litoral_na_mao/pages/QuemSomos/quem_somos.dart';
-import 'package:litoral_na_mao/pages/Turism/turism_item.dart';
-import 'package:litoral_na_mao/pages/Turism/turism_list.dart';
+import 'package:litoral_na_mao/pages/Tourism/tourism_item.dart';
+import 'package:litoral_na_mao/pages/Tourism/tourism_list.dart';
 
 final routes = GoRouter(
   initialLocation: '/',
@@ -37,7 +37,7 @@ final routes = GoRouter(
       path: '/:nameCity/turism_list',
       builder: (context, state) {
         final nameCity = state.pathParameters['nameCity'];
-        return TurismList(
+        return TourismList(
           nameCity: nameCity,
         );
       },
@@ -47,7 +47,7 @@ final routes = GoRouter(
       builder: (context, state) {
         final nameCity = state.pathParameters['nameCity'];
         final namePoint = state.pathParameters['namePoint'];
-        return TurismItemPage(
+        return TourismItemPage(
           nameCity: nameCity,
           namePoint: namePoint,
           desc: 'Hello World',

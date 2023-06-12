@@ -13,16 +13,17 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  go_router: ^7.1.1
-  responsive_builder: ^0.4.0
-  unicons: ^2.1.1
-  ionicons: ^0.2.2
-  carousel_slider: ^4.2.1
-  flutter_map: ^4.0.0
-  latlong2: ^0.8.2
-  cupertino_icons: ^1.0.2
-  url_launcher: ^6.1.11
-  http: ^0.13.6
+  go_router:
+  responsive_builder:
+  unicons:
+  ionicons:
+  carousel_slider:
+  flutter_map:
+  latlong2:
+  cupertino_icons:
+  url_launcher:
+  http:
+  dio:
 
 dev_dependencies:
   flutter_test:

@@ -3,8 +3,8 @@ import 'package:litoral_na_mao/widgets/FormSearch/form_search_bar.dart';
 import 'package:litoral_na_mao/widgets/Header/header.dart';
 import 'package:litoral_na_mao/widgets/Turism/turism_point.dart';
 
-class TurismList extends StatelessWidget {
-  const TurismList({Key? key, required this.nameCity}) : super(key: key);
+class TourismList extends StatelessWidget {
+  const TourismList({Key? key, required this.nameCity}) : super(key: key);
 
   final String? nameCity;
 

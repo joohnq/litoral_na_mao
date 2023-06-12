@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class City extends StatelessWidget {
-  const City({Key? key, required this.name}) : super(key: key);
+  const City({Key? key, required this.name, required this.image})
+      : super(key: key);
 
   final String name;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go('/$name');
+        context.go(
+          '/$name',
+        );
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
@@ -33,8 +37,7 @@ class City extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   image: DecorationImage(
-                      image: AssetImage('assets/images/$name.jpg'),
-                      fit: BoxFit.cover),
+                      image: NetworkImage(image), fit: BoxFit.cover),
                 ),
               )
             ],

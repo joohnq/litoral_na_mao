@@ -1,8 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/app/data/http/http_client.dart';
-import 'package:litoral_na_mao/app/data/repositiories/city_repository.dart';
-import 'package:litoral_na_mao/colors.dart';
-import 'package:litoral_na_mao/pages/stores/city_store.dart';
+import 'package:litoral_na_mao/models/city.dart';
+import 'package:litoral_na_mao/services/api_service.dart';
 import 'package:litoral_na_mao/widgets/Buttons/buttons_qap.dart';
 import 'package:litoral_na_mao/widgets/Carousel/carousel.dart';
 import 'package:litoral_na_mao/widgets/Citie/cities.dart';
@@ -17,16 +17,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final CityStore store = CityStore(
-    repository: CityRepository(
-      client: HttpClient(),
-    ),
-  );
+  late Future<List<City>> futureCities;
 
   @override
   void initState() {
     super.initState();
-    store.getCities();
+    futureCities = fetchApi();
+  }
+
+  Future<List<City>> fetchApi() async {
+    final cities = await getHttp();
+    return cities;
   }
 
   @override
@@ -42,66 +43,60 @@ class _HomeState extends State<Home> {
       body: ListView(
         children: [
           const Header(),
-          const Carousel(images: [
-            'caraguatatuba.jpg',
-            'ilhabela.jpg',
-            'saosebastiao.jpg',
-            'ubatuba.jpg'
-          ], carouselText: [
-            'O guia',
-            'definitivo',
-            'da sua Cidade'
-          ]),
-          AnimatedBuilder(
-            animation:
-                Listenable.merge([store.isLoading, store.error, store.state]),
-            builder: (context, child) {
-              if (store.isLoading.value) {
-                return const CircularProgressIndicator();
-              }
-
-              if (store.error.value.isNotEmpty) {
-                return Center(
-                  child: Text(
-                    store.error.value,
-                    style: const TextStyle(
-                        color: ColorPalette.blue,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20),
-                    textAlign: TextAlign.center,
-                  ),
-                );
-              }
-
-              if (store.state.value.isEmpty) {
+          FutureBuilder<List<City>>(
+            future: futureCities,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                // Display a loading indicator while the data is being fetched
                 return const Center(
-                  child: Text(
-                    'Nenhum item na lista',
-                    style: TextStyle(
-                        color: ColorPalette.blue,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20),
-                    textAlign: TextAlign.center,
-                  ),
+                  child: CircularProgressIndicator(),
+                );
+              } else if (snapshot.hasError) {
+                // Display an error widget if there is an error in fetching the data
+                return const Center(
+                  child: Text('Erro ao buscar os dados da API'),
+                );
+              } else if (snapshot.hasData) {
+                // Display the user interface with the data obtained from the API
+                final cities = snapshot.data!;
+                final carouselImages =
+                    cities.expand((city) => city.images).toList();
+                List<Map<String, String>> citiesData = [];
+                for (var i = 0; i < cities.length && i < 4; i++) {
+                  String name = cities[i].name;
+                  String firstImage = cities[i].images[0];
+
+                  Map<String, String> data = {
+                    'name': name,
+                    'image': firstImage,
+                  };
+
+                  citiesData.add(data);
+                }
+                return Column(
+                  children: [
+                    Carousel(
+                      images: carouselImages,
+                      carouselText: const [
+                        'O guia',
+                        'definitivo',
+                        'da sua Cidade'
+                      ],
+                    ),
+                    Cities(
+                      cities: citiesData,
+                    ),
+                  ],
                 );
               } else {
-                return ListView.separated(
-                  separatorBuilder: (context, index) => const SizedBox(
-                    height: 32,
-                  ),
-                  itemCount: store.state.value.length,
-                  padding: const EdgeInsets.all(16),
-                  itemBuilder: (_, index) {
-                    final item = store.state.value[index];
-
-                    return Column(children: [Text(item.name)]);
-                  },
+                // If there is no data, display a message or an alternate widget
+                return const Center(
+                  child: Text('Nenhum dado disponível'),
                 );
               }
             },
           ),
-          const Cities(),
-          const ButtonsQap()
+          const ButtonsQap(),
         ],
       ),
       endDrawer: CustomDrawer(onCloseDrawer: closeDrawer),

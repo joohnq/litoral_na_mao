@@ -43,8 +43,8 @@ class Carousel extends StatelessWidget {
                           ),
                         ),
                       ),
-                      child: Image.asset(
-                        'assets/images/$i',
+                      child: Image.network(
+                        i,
                         height: carouselHeight,
                         fit: BoxFit.cover,
                         width: MediaQuery.of(context).size.width,

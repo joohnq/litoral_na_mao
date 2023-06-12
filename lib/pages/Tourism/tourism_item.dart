@@ -5,8 +5,8 @@ import 'package:litoral_na_mao/widgets/FormSearch/form_search_bar.dart';
 import 'package:litoral_na_mao/widgets/Header/header.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class TurismItemPage extends StatelessWidget {
-  const TurismItemPage({
+class TourismItemPage extends StatelessWidget {
+  const TourismItemPage({
     Key? key,
     required this.nameCity,
     required this.namePoint,

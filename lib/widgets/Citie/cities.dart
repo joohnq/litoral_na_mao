@@ -3,88 +3,32 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:litoral_na_mao/widgets/Citie/city.dart';
 
 class Cities extends StatelessWidget {
-  const Cities({super.key});
+  final List<Map<String, String>> cities;
+
+  const Cities({Key? key, required this.cities}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         final screenSize = sizingInformation.screenSize;
-        const smallBreakpoint = 576.0;
-        const mediumBreakpoint = 992.0;
-        const highBreakpoint = 1820.0;
 
-        if (screenSize.width < smallBreakpoint) {
-          return const Column(
-            children: [
-              City(name: 'caraguatatuba'),
-              City(name: 'ilhabela'),
-              City(name: 'saosebastiao'),
-              City(name: 'ubatuba'),
-            ],
-          );
-        } else if (screenSize.width < mediumBreakpoint) {
-          return const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                child: Column(
-                  children: [
-                    City(name: 'caraguatatuba'),
-                    City(name: 'ilhabela'),
-                  ],
-                ),
-              ),
-              Flexible(
-                child: Column(
-                  children: [
-                    City(name: 'saosebastiao'),
-                    City(name: 'ubatuba'),
-                  ],
-                ),
-              ),
-            ],
-          );
-        } else if (screenSize.width < highBreakpoint) {
-          return const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                fit: FlexFit.tight,
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  children: [
-                    City(name: 'caraguatatuba'),
-                    City(name: 'ilhabela'),
-                    City(name: 'saosebastiao'),
-                    City(name: 'ubatuba'),
-                  ],
-                ),
-              ),
-            ],
+        if (screenSize.width < 576.0) {
+          return Column(
+            children: _buildCity(cities),
           );
         } else {
-          return const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                child: Flexible(
-                  fit: FlexFit.tight,
-                  child: Wrap(
-                    alignment: WrapAlignment.spaceBetween,
-                    children: [
-                      City(name: 'caraguatatuba'),
-                      City(name: 'ilhabela'),
-                      City(name: 'saosebastiao'),
-                      City(name: 'ubatuba'),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+          return Wrap(
+            children: _buildCity(cities),
           );
         }
       },
     );
+  }
+
+  List<Widget> _buildCity(List<Map<String, String>> cities) {
+    return cities.map((city) {
+      return City(name: city['name']!, image: city['image']!);
+    }).toList();
   }
 }
