@@ -26,8 +26,7 @@ class _HomeState extends State<Home> {
   }
 
   Future<List<City>> fetchApi() async {
-    final cities = await getHttp();
-    return cities;
+    return await getHttp();
   }
 
   @override
@@ -47,17 +46,14 @@ class _HomeState extends State<Home> {
             future: futureCities,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                // Display a loading indicator while the data is being fetched
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (snapshot.hasError) {
-                // Display an error widget if there is an error in fetching the data
                 return const Center(
                   child: Text('Erro ao buscar os dados da API'),
                 );
               } else if (snapshot.hasData) {
-                // Display the user interface with the data obtained from the API
                 final cities = snapshot.data!;
                 final carouselImages =
                     cities.expand((city) => city.images).toList();
@@ -89,7 +85,6 @@ class _HomeState extends State<Home> {
                   ],
                 );
               } else {
-                // If there is no data, display a message or an alternate widget
                 return const Center(
                   child: Text('Nenhum dado disponível'),
                 );

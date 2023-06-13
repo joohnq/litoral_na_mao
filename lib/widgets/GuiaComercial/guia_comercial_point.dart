@@ -3,10 +3,18 @@ import 'package:go_router/go_router.dart';
 import 'package:litoral_na_mao/colors.dart';
 
 class GuiaComercialPoint extends StatefulWidget {
-  const GuiaComercialPoint({Key? key, required this.nameCity})
+  const GuiaComercialPoint(
+      {Key? key,
+      required this.namePoint,
+      required this.nameCity,
+      required this.descPoint,
+      required this.locationPoint})
       : super(key: key);
 
   final String? nameCity;
+  final String? namePoint;
+  final String? descPoint;
+  final String? locationPoint;
 
   @override
   State<GuiaComercialPoint> createState() => GuiaComercialPointState();
@@ -39,10 +47,20 @@ class GuiaComercialPointState extends State<GuiaComercialPoint> {
           child: showFirstWidget
               ? FirstWidget(
                   key: const ValueKey(1),
+                  pointData: {
+                    "name": widget.namePoint,
+                    "desc": widget.descPoint,
+                    "location": widget.locationPoint
+                  },
                   onToggle: toggleWidget,
                 )
               : SecondWidget(
                   key: const ValueKey(2),
+                  pointData: {
+                    "name": widget.namePoint,
+                    "desc": widget.descPoint,
+                    "location": widget.locationPoint
+                  },
                   onToggle: toggleWidget,
                   nameCity: widget.nameCity,
                 ),
@@ -53,8 +71,10 @@ class GuiaComercialPointState extends State<GuiaComercialPoint> {
 }
 
 class FirstWidget extends StatelessWidget {
-  const FirstWidget({Key? key, required this.onToggle}) : super(key: key);
+  final Map pointData;
   final VoidCallback onToggle;
+  const FirstWidget({Key? key, required this.pointData, required this.onToggle})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -99,11 +119,15 @@ class FirstWidget extends StatelessWidget {
 }
 
 class SecondWidget extends StatelessWidget {
-  const SecondWidget({Key? key, required this.onToggle, required this.nameCity})
-      : super(key: key);
-
+  final Map pointData;
   final VoidCallback onToggle;
   final String? nameCity;
+  const SecondWidget(
+      {Key? key,
+      required this.pointData,
+      required this.onToggle,
+      required this.nameCity})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
