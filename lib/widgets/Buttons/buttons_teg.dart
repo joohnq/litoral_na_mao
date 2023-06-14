@@ -27,7 +27,7 @@ class ButtonsTeg extends StatelessWidget {
                   context,
                   Icons.compare_arrows,
                   'Turismo',
-                  '/turism_list',
+                  '/tourism',
                   {'nameCity': name},
                   isSmallScreen,
                 ),

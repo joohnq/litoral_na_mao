@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class TurismPoint extends StatelessWidget {
-  const TurismPoint(
-      {Key? key,
-      required this.namePoint,
-      required this.nameCity,
-      required this.descPoint,
-      required this.category})
-      : super(key: key);
-
-  final String namePoint;
+class TourismPointCategory extends StatelessWidget {
   final String nameCity;
-  final String descPoint;
-  final String category;
+  final String nameCategory;
+
+  const TourismPointCategory({
+    Key? key,
+    required this.nameCity,
+    required this.nameCategory,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +24,13 @@ class TurismPoint extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          context.go('/$nameCity/tourism/$category/$namePoint');
+          context.go(
+              '/$nameCity/tourism/${nameCategory[0].toLowerCase() + nameCategory.substring(1)}');
         },
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Text(
-            namePoint[0].toUpperCase() + namePoint.substring(1),
+            nameCategory[0].toUpperCase() + nameCategory.substring(1),
             style: const TextStyle(fontSize: 20),
           ),
         ),

@@ -1,13 +1,14 @@
 import 'package:go_router/go_router.dart';
-import 'package:litoral_na_mao/pages/Anuncie/anuncie.dart';
-import 'package:litoral_na_mao/pages/Citie/city_detail.dart';
-import 'package:litoral_na_mao/pages/GuiaComercial/guia_comercial_item.dart';
-import 'package:litoral_na_mao/pages/GuiaComercial/guia_comercial_list.dart';
-import 'package:litoral_na_mao/pages/Home/home.dart';
-import 'package:litoral_na_mao/pages/Privacidade/privacidade.dart';
-import 'package:litoral_na_mao/pages/QuemSomos/quem_somos.dart';
-import 'package:litoral_na_mao/pages/Tourism/tourism_item.dart';
-import 'package:litoral_na_mao/pages/Tourism/tourism_list.dart';
+import 'package:litoral_na_mao/pages/anuncie.dart';
+import 'package:litoral_na_mao/pages/city_detail.dart';
+import 'package:litoral_na_mao/pages/guia_comercial_item.dart';
+import 'package:litoral_na_mao/pages/guia_comercial_list.dart';
+import 'package:litoral_na_mao/pages/home.dart';
+import 'package:litoral_na_mao/pages/privacidade.dart';
+import 'package:litoral_na_mao/pages/quem_somos.dart';
+import 'package:litoral_na_mao/pages/tourism_item.dart';
+import 'package:litoral_na_mao/pages/tourism_list.dart';
+import 'package:litoral_na_mao/pages/tourism_list_category.dart';
 
 final routes = GoRouter(
   initialLocation: '/',
@@ -34,16 +35,16 @@ final routes = GoRouter(
       },
     ),
     GoRoute(
-      path: '/:nameCity/turism_list',
+      path: '/:nameCity/tourism',
       builder: (context, state) {
         final nameCity = state.pathParameters['nameCity'];
-        return TourismList(
+        return TourismListCategory(
           nameCity: nameCity,
         );
       },
     ),
     GoRoute(
-      path: '/:nameCity/turism_list/:namePoint',
+      path: '/:nameCity/tourism/:category/:namePoint',
       builder: (context, state) {
         final nameCity = state.pathParameters['nameCity'];
         final namePoint = state.pathParameters['namePoint'];
@@ -51,6 +52,17 @@ final routes = GoRouter(
           nameCity: nameCity,
           namePoint: namePoint,
           desc: 'Hello World',
+        );
+      },
+    ),
+    GoRoute(
+      path: '/:nameCity/tourism/:nameCategory',
+      builder: (context, state) {
+        final nameCity = state.pathParameters['nameCity'];
+        final nameCategory = state.pathParameters['nameCategory'];
+        return TourismList(
+          nameCity: nameCity,
+          nameCategory: nameCategory,
         );
       },
     ),

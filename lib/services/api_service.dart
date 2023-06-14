@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:dio/dio.dart';
 import 'package:litoral_na_mao/models/city.dart';
 
@@ -13,7 +11,7 @@ Future<List<City>> getHttp() async {
     final cities = data.map((item) => City.fromJson(item)).toList();
     return cities;
   } catch (error) {
-    print('Erro ao buscar os dados da API: $error');
+    Exception('Erro ao buscar os dados da API: $error');
     rethrow;
   }
 }
