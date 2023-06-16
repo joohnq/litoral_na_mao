@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/colors.dart';
+import 'package:litoral_na_mao/models/city.dart';
+import 'package:litoral_na_mao/services/api_service.dart';
 import 'package:litoral_na_mao/widgets/Drawer/drawer_litoral.dart';
 import 'package:litoral_na_mao/widgets/FormSearch/form_search_bar.dart';
 import 'package:litoral_na_mao/widgets/Header/header.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class TourismItemPage extends StatelessWidget {
+class TourismItemPage extends StatefulWidget {
   const TourismItemPage({
     Key? key,
     required this.nameCity,
@@ -16,6 +18,23 @@ class TourismItemPage extends StatelessWidget {
   final String? nameCity;
   final String? namePoint;
   final String desc;
+
+  @override
+  State<TourismItemPage> createState() => _TourismItemPageState();
+}
+
+class _TourismItemPageState extends State<TourismItemPage> {
+  late Future<List<City>> futureCities;
+
+  @override
+  void initState() {
+    super.initState();
+    futureCities = fetchApi();
+  }
+
+  Future<List<City>> fetchApi() async {
+    return await getHttp();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +61,7 @@ class TourismItemPage extends StatelessWidget {
                           fontSize: isSmallScreen ? 28 : 40,
                         );
                         return Text(
-                          'Turismo - ${nameCity![0].toUpperCase() + nameCity!.substring(1)}',
+                          'Turismo - ${widget.nameCity![0].toUpperCase() + widget.nameCity!.substring(1)}',
                           style: textStyle,
                         );
                       },
@@ -59,7 +78,8 @@ class TourismItemPage extends StatelessWidget {
                       return Padding(
                         padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
                         child: Text(
-                          namePoint![0].toUpperCase() + namePoint!.substring(1),
+                          widget.namePoint![0].toUpperCase() +
+                              widget.namePoint!.substring(1),
                           style: textStyle,
                         ),
                       );
@@ -76,7 +96,7 @@ class TourismItemPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
                     child: Text(
-                      desc,
+                      widget.desc,
                       style: const TextStyle(
                         fontWeight: FontWeight.normal,
                         fontSize: 18,

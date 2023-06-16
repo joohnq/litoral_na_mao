@@ -1,15 +1,16 @@
-
+// ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:litoral_na_mao/format_text.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
 import 'package:litoral_na_mao/widgets/Drawer/drawer_litoral.dart';
 import 'package:litoral_na_mao/widgets/FormSearch/form_search_bar.dart';
 import 'package:litoral_na_mao/widgets/Header/header.dart';
-import 'package:litoral_na_mao/widgets/GuiaComercial/guia_comercial_point.dart';
+import 'package:litoral_na_mao/widgets/CommercialGuide/commercial_guide_point.dart';
 
-class GuiaComercialList extends StatefulWidget {
-  const GuiaComercialList({
+class CommercialGuideList extends StatefulWidget {
+  const CommercialGuideList({
     Key? key,
     required this.nameCity,
   }) : super(key: key);
@@ -17,20 +18,28 @@ class GuiaComercialList extends StatefulWidget {
   final String? nameCity;
 
   @override
-  State<GuiaComercialList> createState() => _GuiaComercialListState();
+  State<CommercialGuideList> createState() => _GuiaComercialListState();
 }
 
-class _GuiaComercialListState extends State<GuiaComercialList> {
-  late Future<List<City>> futureCities;
+class _GuiaComercialListState extends State<CommercialGuideList> {
+  late Future<List<CommercialGuide>> futurePoint;
 
   @override
   void initState() {
     super.initState();
-    futureCities = fetchApi();
+    futurePoint = fetchPoints();
   }
 
-  Future<List<City>> fetchApi() async {
-    return await getHttp();
+  Future<List<CommercialGuide>> fetchPoints() async {
+    final cities = await getHttp();
+    final filteredCity = cities.firstWhere(
+      (city) => removerEspacosLetrasMaiusculas(city.name) == widget.nameCity,
+      orElse: () =>
+          City(name: '', tourism: [], images: [], commercialGuide: []),
+    );
+    return filteredCity.commercialGuide
+        .map((guiaComercial) => guiaComercial)
+        .toList();
   }
 
   @override
@@ -43,8 +52,8 @@ class _GuiaComercialListState extends State<GuiaComercialList> {
           Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: FutureBuilder<List<City>>(
-                future: futureCities,
+              child: FutureBuilder<List<CommercialGuide>>(
+                future: futurePoint,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(
@@ -55,16 +64,16 @@ class _GuiaComercialListState extends State<GuiaComercialList> {
                       child: Text('Erro ao buscar os dados da API'),
                     );
                   } else if (snapshot.hasData) {
-                    // final cities = snapshot.data!;
+                    final points = snapshot.data!;
                     return Wrap(
                       spacing: 10,
                       children: List.generate(
-                        10,
-                        (_) => GuiaComercialPoint(
+                        points.length,
+                        (index) => CommercialGuidePoint(
                           nameCity: widget.nameCity ?? '',
-                          namePoint: '',
-                          descPoint: '',
-                          locationPoint: '',
+                          namePoint: points[index].name,
+                          descPoint: points[index].description,
+                          locationPoint: "points[index].location",
                         ),
                       ),
                     );

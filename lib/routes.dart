@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:litoral_na_mao/pages/anuncie.dart';
 import 'package:litoral_na_mao/pages/city_detail.dart';
-import 'package:litoral_na_mao/pages/guia_comercial_item.dart';
-import 'package:litoral_na_mao/pages/guia_comercial_list.dart';
+import 'package:litoral_na_mao/pages/commercial_guide_item.dart';
+import 'package:litoral_na_mao/pages/commercial_guide_list.dart';
 import 'package:litoral_na_mao/pages/home.dart';
 import 'package:litoral_na_mao/pages/privacidade.dart';
 import 'package:litoral_na_mao/pages/quem_somos.dart';
@@ -67,19 +67,19 @@ final routes = GoRouter(
       },
     ),
     GoRoute(
-      path: '/:nameCity/guia_comercial_list',
+      path: '/:nameCity/commercialguide',
       builder: (context, state) {
         final nameCity = state.pathParameters['nameCity'];
-        return GuiaComercialList(
+        return CommercialGuideList(
           nameCity: nameCity,
         );
       },
     ),
     GoRoute(
-      path: '/:nameCity/guia_comercial_list/:namePoint',
+      path: '/:nameCity/commercialguide/:namePoint',
       builder: (context, state) {
         final namePoint = state.pathParameters['namePoint'];
-        return GuiaComercialItemPage(
+        return CommercialGuideItemPage(
           namePoint: namePoint,
         );
       },

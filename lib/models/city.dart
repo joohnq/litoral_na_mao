@@ -27,76 +27,45 @@ class Welcome {
 class City {
   String name;
   List<String> images;
-  List<Turism> turism;
-  List<GuiaComercial>? guiaComercial;
-  List<GuiaComercial>? guiaComercialList;
+  List<Tourism> tourism;
+  List<CommercialGuide> commercialGuide;
 
   City({
     required this.name,
     required this.images,
-    required this.turism,
-    this.guiaComercial,
-    this.guiaComercialList,
+    required this.tourism,
+    required this.commercialGuide,
   });
 
   factory City.fromJson(Map<String, dynamic> json) => City(
         name: json["name"],
         images: List<String>.from(json["images"].map((x) => x)),
-        turism:
-            List<Turism>.from(json["turism"].map((x) => Turism.fromJson(x))),
-        guiaComercial: json["guiaComercial"] == null
-            ? []
-            : List<GuiaComercial>.from(
-                json["guiaComercial"]!.map((x) => GuiaComercial.fromJson(x))),
-        guiaComercialList: json["guia_comercial_list"] == null
-            ? []
-            : List<GuiaComercial>.from(json["guia_comercial_list"]!
-                .map((x) => GuiaComercial.fromJson(x))),
+        tourism:
+            List<Tourism>.from(json["tourism"].map((x) => Tourism.fromJson(x))),
+        commercialGuide: List<CommercialGuide>.from(
+            json["commercialGuide"].map((x) => CommercialGuide.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "name": name,
         "images": List<dynamic>.from(images.map((x) => x)),
-        "turism": List<dynamic>.from(turism.map((x) => x.toJson())),
-        "guiaComercial": guiaComercial == null
-            ? []
-            : List<dynamic>.from(guiaComercial!.map((x) => x.toJson())),
-        "guia_comercial_list": guiaComercialList == null
-            ? []
-            : List<dynamic>.from(guiaComercialList!.map((x) => x.toJson())),
+        "tourism": List<dynamic>.from(tourism.map((x) => x.toJson())),
+        "commercialGuide":
+            List<dynamic>.from(commercialGuide.map((x) => x.toJson())),
       };
 }
 
-class GuiaComercial {
-  String category;
-  List<Place> places;
-
-  GuiaComercial({
-    required this.category,
-    required this.places,
-  });
-
-  factory GuiaComercial.fromJson(Map<String, dynamic> json) => GuiaComercial(
-        category: json["category"],
-        places: List<Place>.from(json["places"].map((x) => Place.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "category": category,
-        "places": List<dynamic>.from(places.map((x) => x.toJson())),
-      };
-}
-
-class Place {
+class CommercialGuide {
   String name;
   String description;
 
-  Place({
+  CommercialGuide({
     required this.name,
     required this.description,
   });
 
-  factory Place.fromJson(Map<String, dynamic> json) => Place(
+  factory CommercialGuide.fromJson(Map<String, dynamic> json) =>
+      CommercialGuide(
         name: json["name"],
         description: json["description"],
       );
@@ -107,16 +76,16 @@ class Place {
       };
 }
 
-class Turism {
+class Tourism {
   String category;
   List<Point> points;
 
-  Turism({
+  Tourism({
     required this.category,
     required this.points,
   });
 
-  factory Turism.fromJson(Map<String, dynamic> json) => Turism(
+  factory Tourism.fromJson(Map<String, dynamic> json) => Tourism(
         category: json["category"],
         points: List<Point>.from(json["points"].map((x) => Point.fromJson(x))),
       );

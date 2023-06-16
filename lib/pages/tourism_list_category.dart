@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litoral_na_mao/format_text.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
 import 'package:litoral_na_mao/widgets/FormSearch/form_search_bar.dart';
@@ -27,10 +28,11 @@ class _TourismListCategoryState extends State<TourismListCategory> {
   Future<List<String>> fetchCategories() async {
     final cities = await getHttp();
     final filteredCity = cities.firstWhere(
-      (city) => city.name == widget.nameCity,
-      orElse: () => City(name: '', turism: [], images: []),
+      (city) => removerEspacosLetrasMaiusculas(city.name) == widget.nameCity,
+      orElse: () =>
+          City(name: '', images: [], tourism: [], commercialGuide: []),
     );
-    return filteredCity.turism.map((tourism) => tourism.category).toList();
+    return filteredCity.tourism.map((tourism) => tourism.category).toList();
   }
 
   @override

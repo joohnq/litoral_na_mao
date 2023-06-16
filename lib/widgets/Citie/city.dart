@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:litoral_na_mao/format_text.dart';
 
 class City extends StatelessWidget {
   const City({Key? key, required this.name, required this.image})
@@ -13,7 +14,7 @@ class City extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         context.go(
-          '/$name',
+          '/${removerEspacosLetrasMaiusculas(name)}',
         );
       },
       child: MouseRegion(

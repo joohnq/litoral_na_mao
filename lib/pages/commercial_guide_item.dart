@@ -7,8 +7,8 @@ import 'package:litoral_na_mao/widgets/Header/header.dart';
 import 'package:litoral_na_mao/widgets/Map/map.dart';
 import 'package:litoral_na_mao/widgets/SocialMediaIcon/social_media_section.dart';
 
-class GuiaComercialItemPage extends StatelessWidget {
-  const GuiaComercialItemPage({Key? key, required this.namePoint})
+class CommercialGuideItemPage extends StatelessWidget {
+  const CommercialGuideItemPage({Key? key, required this.namePoint})
       : super(key: key);
 
   final String? namePoint;
@@ -39,9 +39,7 @@ class GuiaComercialItemPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Carousel(
-                      images: ['caraguatatuba.jpg', 'ilhabela.jpg'],
-                      carouselText: []),
+                  const Carousel(images: [], carouselText: []),
                   _buildInfoSection(
                     title: 'Endereço',
                     icon: Icons.place,

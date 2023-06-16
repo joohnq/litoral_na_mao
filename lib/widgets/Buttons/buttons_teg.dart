@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:litoral_na_mao/colors.dart';
+import 'package:litoral_na_mao/format_text.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ButtonsTeg extends StatelessWidget {
@@ -49,8 +50,8 @@ class ButtonsTeg extends StatelessWidget {
                   context,
                   Icons.place,
                   'Guia Comercial',
-                  '/guia_comercial_list',
-                  {'nameCity': name},
+                  '/commercialguide',
+                  {'nameCity': removerEspacosLetrasMaiusculas(name)},
                   isSmallScreen,
                 ),
               ),

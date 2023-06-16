@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:litoral_na_mao/colors.dart';
 
-class GuiaComercialPoint extends StatefulWidget {
-  const GuiaComercialPoint(
+class CommercialGuidePoint extends StatefulWidget {
+  const CommercialGuidePoint(
       {Key? key,
       required this.namePoint,
       required this.nameCity,
@@ -17,10 +17,10 @@ class GuiaComercialPoint extends StatefulWidget {
   final String? locationPoint;
 
   @override
-  State<GuiaComercialPoint> createState() => GuiaComercialPointState();
+  State<CommercialGuidePoint> createState() => GuiaComercialPointState();
 }
 
-class GuiaComercialPointState extends State<GuiaComercialPoint> {
+class GuiaComercialPointState extends State<CommercialGuidePoint> {
   bool showFirstWidget = true;
 
   void toggleWidget() {
@@ -88,28 +88,33 @@ class FirstWidget extends StatelessWidget {
             decoration: const BoxDecoration(color: Colors.black12),
           ),
           const SizedBox(width: 10),
-          const Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'CIDADE',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'Descrição',
-                  style: TextStyle(color: ColorPalette.orange, fontSize: 18),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Text(
-                    'Localização',
-                    style:
-                        TextStyle(color: ColorPalette.lightGray, fontSize: 18),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 250),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    pointData['name'],
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                )
-              ],
+                  Text(
+                    pointData['desc'],
+                    style: const TextStyle(
+                        color: ColorPalette.orange, fontSize: 16),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: Text(
+                      'Localização',
+                      style: TextStyle(
+                          color: ColorPalette.lightGray, fontSize: 18),
+                    ),
+                  )
+                ],
+              ),
             ),
           )
         ],
@@ -134,18 +139,18 @@ class SecondWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onToggle,
       onLongPress: () {
-        context.go('/$nameCity/guia_comercial_list/$nameCity');
+        context.go('/$nameCity/commercialguide/${pointData['pointName']}');
       },
       child: Container(
         decoration: const BoxDecoration(
             color: Color.fromRGBO(217, 217, 217, 1),
             borderRadius: BorderRadius.all(Radius.circular(20))),
+        // constraints: const BoxConstraints(minHeight: 250),
         width: 400,
-        height: 200,
         child: Column(
           children: [
             Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   width: 120,
@@ -156,35 +161,39 @@ class SecondWidget extends StatelessWidget {
                       color: Colors.black12),
                 ),
                 const SizedBox(width: 10),
-                const Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'CIDADE',
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'Descrição',
-                        style:
-                            TextStyle(color: ColorPalette.orange, fontSize: 18),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Text(
-                          'Localização',
-                          style: TextStyle(
-                              color: ColorPalette.lightGray, fontSize: 18),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Container(
+                    constraints: const BoxConstraints(maxWidth: 250),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          pointData['name'],
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                      )
-                    ],
+                        Text(
+                          pointData['desc'],
+                          style: const TextStyle(
+                              color: ColorPalette.orange, fontSize: 16),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 10),
+                          child: Text(
+                            'Localização',
+                            style: TextStyle(
+                                color: ColorPalette.lightGray, fontSize: 18),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],
             ),
-            Expanded(
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -200,7 +209,7 @@ class SecondWidget extends StatelessWidget {
                       child: const Icon(Icons.extension, size: 50)),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

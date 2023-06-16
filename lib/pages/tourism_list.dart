@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:litoral_na_mao/format_text.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
 import 'package:litoral_na_mao/widgets/FormSearch/form_search_bar.dart';
@@ -30,11 +30,12 @@ class _TourismListState extends State<TourismList> {
   Future fetchTourismPoints() async {
     final cities = await getHttp();
     final filteredCity = cities.firstWhere(
-      (city) => city.name == widget.nameCity,
-      orElse: () => City(name: '', turism: [], images: []),
+      (city) => removerEspacosLetrasMaiusculas(city.name) == widget.nameCity,
+      orElse: () =>
+          City(name: '', tourism: [], images: [], commercialGuide: []),
     );
     final filteredTourism =
-        filteredCity.turism.expand((tourism) => tourism.points).toList();
+        filteredCity.tourism.expand((tourism) => tourism.points).toList();
 
     final filteredTourismPoints = filteredTourism
         .map((point) => {
@@ -88,23 +89,6 @@ class _TourismListState extends State<TourismList> {
                     }
                   },
                 ),
-                // Column(
-                //   crossAxisAlignment: CrossAxisAlignment.stretch,
-                //   children: [
-                //     TurismPoint(
-                //       nameCity: widget.nameCity!,
-                //       namePoint: 'brava',
-                //       descPoint: 'Description',
-                //       category: widget.nameCategory!,
-                //     ),
-                //     TurismPoint(
-                //       nameCity: widget.nameCity!,
-                //       namePoint: 'chara',
-                //       descPoint: 'Description',
-                //       category: widget.nameCategory!,
-                //     )
-                //   ],
-                // ),
               ),
             ),
           )
