@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/colors.dart';
+import 'package:litoral_na_mao/common/theme/colors.dart';
 
 class Header extends StatelessWidget {
   const Header({Key? key}) : super(key: key);

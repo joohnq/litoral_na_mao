@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
-import 'package:litoral_na_mao/widgets/Buttons/buttons_qap.dart';
-import 'package:litoral_na_mao/widgets/Carousel/carousel.dart';
-import 'package:litoral_na_mao/widgets/Citie/cities.dart';
-import 'package:litoral_na_mao/widgets/Drawer/drawer_litoral.dart';
-import 'package:litoral_na_mao/widgets/Header/header.dart';
+import 'package:litoral_na_mao/widgets/buttons_qap.dart';
+import 'package:litoral_na_mao/widgets/carousel.dart';
+import 'package:litoral_na_mao/widgets/cities.dart';
+import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
+import 'package:litoral_na_mao/widgets/header.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);

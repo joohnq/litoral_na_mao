@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:litoral_na_mao/colors.dart';
+import 'package:litoral_na_mao/common/theme/colors.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({

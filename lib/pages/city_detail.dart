@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/colors.dart';
-import 'package:litoral_na_mao/format_text.dart';
+import 'package:litoral_na_mao/common/theme/colors.dart';
+import 'package:litoral_na_mao/utils/format_text.dart';
 // import 'package:litoral_na_mao/future_builder.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
-import 'package:litoral_na_mao/widgets/Buttons/buttons_qap.dart';
-import 'package:litoral_na_mao/widgets/Buttons/buttons_teg.dart';
-import 'package:litoral_na_mao/widgets/Carousel/carousel.dart';
-import 'package:litoral_na_mao/widgets/Drawer/drawer_litoral.dart';
-import 'package:litoral_na_mao/widgets/Header/header.dart';
-import 'package:litoral_na_mao/widgets/FormSearch/form_search_bar.dart';
+import 'package:litoral_na_mao/widgets/buttons_qap.dart';
+import 'package:litoral_na_mao/widgets/buttons_teg.dart';
+import 'package:litoral_na_mao/widgets/carousel.dart';
+import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
+import 'package:litoral_na_mao/widgets/header.dart';
+import 'package:litoral_na_mao/widgets/form_search_bar.dart';
 
 class CityDetail extends StatefulWidget {
   final String? nameCity;

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/colors.dart';
-import 'package:litoral_na_mao/widgets/Carousel/carousel.dart';
-import 'package:litoral_na_mao/widgets/Drawer/drawer_litoral.dart';
-import 'package:litoral_na_mao/widgets/FormSearch/form_search_bar.dart';
-import 'package:litoral_na_mao/widgets/Header/header.dart';
-import 'package:litoral_na_mao/widgets/Map/map.dart';
-import 'package:litoral_na_mao/widgets/SocialMediaIcon/social_media_section.dart';
+import 'package:litoral_na_mao/common/theme/colors.dart';
+import 'package:litoral_na_mao/widgets/carousel.dart';
+import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
+import 'package:litoral_na_mao/widgets/form_search_bar.dart';
+import 'package:litoral_na_mao/widgets/header.dart';
+import 'package:litoral_na_mao/widgets/map.dart';
+import 'package:litoral_na_mao/widgets/social_media_section.dart';
 
 class CommercialGuideItemPage extends StatelessWidget {
   const CommercialGuideItemPage({Key? key, required this.namePoint})

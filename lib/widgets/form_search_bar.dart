@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/colors.dart';
+import 'package:litoral_na_mao/common/theme/colors.dart';
 
 class FormSearchBar extends StatelessWidget {
   const FormSearchBar({Key? key}) : super(key: key);

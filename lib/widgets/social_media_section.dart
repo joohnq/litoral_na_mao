@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/widgets/SocialMediaIcon/social_media_icon.dart';
+import 'package:litoral_na_mao/widgets/social_media_icon.dart';
 import 'package:unicons/unicons.dart';
 import 'package:ionicons/ionicons.dart';
 

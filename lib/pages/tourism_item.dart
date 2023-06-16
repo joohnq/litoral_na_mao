@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/colors.dart';
+import 'package:litoral_na_mao/common/theme/colors.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
-import 'package:litoral_na_mao/widgets/Drawer/drawer_litoral.dart';
-import 'package:litoral_na_mao/widgets/FormSearch/form_search_bar.dart';
-import 'package:litoral_na_mao/widgets/Header/header.dart';
+import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
+import 'package:litoral_na_mao/widgets/form_search_bar.dart';
+import 'package:litoral_na_mao/widgets/header.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class TourismItemPage extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/colors.dart';
-import 'package:litoral_na_mao/widgets/Drawer/drawer_litoral.dart';
-import 'package:litoral_na_mao/widgets/Header/header.dart';
+import 'package:litoral_na_mao/common/theme/colors.dart';
+import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
+import 'package:litoral_na_mao/widgets/header.dart';
 
 class QuemSomos extends StatelessWidget {
   const QuemSomos({Key? key}) : super(key: key);

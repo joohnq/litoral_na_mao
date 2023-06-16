@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:litoral_na_mao/format_text.dart';
+import 'package:litoral_na_mao/utils/format_text.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
-import 'package:litoral_na_mao/widgets/FormSearch/form_search_bar.dart';
-import 'package:litoral_na_mao/widgets/Header/header.dart';
-import 'package:litoral_na_mao/widgets/Turism/turism_point.dart';
+import 'package:litoral_na_mao/widgets/form_search_bar.dart';
+import 'package:litoral_na_mao/widgets/header.dart';
+import 'package:litoral_na_mao/widgets/tourism_point.dart';
 // import 'package:litoral_na_mao/widgets/Turism/turism_point.dart';
 
 class TourismList extends StatefulWidget {
@@ -74,7 +74,7 @@ class _TourismListState extends State<TourismList> {
                       return ListView.builder(
                         itemCount: pointsData.length,
                         itemBuilder: (context, index) {
-                          return TurismPoint(
+                          return TourismPoint(
                             nameCity: widget.nameCity!,
                             namePoint: pointsData[index]['name'],
                             descPoint: pointsData[index]['description'],
