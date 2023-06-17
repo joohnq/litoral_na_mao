@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
+import 'package:get/get.dart';
 class TourismPointCategory extends StatelessWidget {
   final String nameCity;
   final String nameCategory;
@@ -24,7 +23,7 @@ class TourismPointCategory extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          context.go(
+          Get.toNamed(
               '/$nameCity/tourism/${nameCategory[0].toLowerCase() + nameCategory.substring(1)}');
         },
         child: Padding(

@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:litoral_na_mao/utils/format_text.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
@@ -8,11 +10,12 @@ import 'package:litoral_na_mao/widgets/tourism_point.dart';
 // import 'package:litoral_na_mao/widgets/Turism/turism_point.dart';
 
 class TourismList extends StatefulWidget {
-  const TourismList({Key? key, required this.nameCity, this.nameCategory})
-      : super(key: key);
+  final nameCity = Get.parameters['nameCity'];
+  final nameCategory = Get.parameters['nameCategory'];
 
-  final String? nameCity;
-  final String? nameCategory;
+  TourismList({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<TourismList> createState() => _TourismListState();
@@ -49,6 +52,20 @@ class _TourismListState extends State<TourismList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: !kIsWeb
+          ? AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              leading: GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  )),
+            )
+          : null,
       body: Column(
         children: [
           const Header(),

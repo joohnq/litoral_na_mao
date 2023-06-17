@@ -12,7 +12,7 @@ class MapCustom extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(0, 20, 0, 100),
       child: FlutterMap(
         options: MapOptions(
-            center: LatLng(-11.6546, -39.0089), zoom: 15, maxZoom: 18),
+            center: const LatLng(-11.6546, -39.0089), zoom: 15, maxZoom: 18),
         children: [
           TileLayer(
             urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',

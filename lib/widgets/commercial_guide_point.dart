@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 
 class CommercialGuidePoint extends StatefulWidget {
@@ -105,11 +105,11 @@ class FirstWidget extends StatelessWidget {
                     style: const TextStyle(
                         color: ColorPalette.orange, fontSize: 16),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
                     child: Text(
-                      'Localização',
-                      style: TextStyle(
+                      pointData['location'],
+                      style: const TextStyle(
                           color: ColorPalette.lightGray, fontSize: 18),
                     ),
                   )
@@ -138,8 +138,15 @@ class SecondWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onToggle,
-      onLongPress: () {
-        context.go('/$nameCity/commercialguide/${pointData['pointName']}');
+      onDoubleTap: () {
+        Get.toNamed(
+          "/$nameCity/commercialguide/${pointData['pointName']}",
+          arguments: {
+            "namePoint": pointData['name'],
+            "desc": pointData['desc'],
+            "location": pointData['location'],
+          },
+        );
       },
       child: Container(
         decoration: const BoxDecoration(

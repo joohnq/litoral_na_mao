@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
 import 'package:litoral_na_mao/widgets/header.dart';
@@ -15,6 +17,20 @@ class QuemSomos extends StatelessWidget {
     }
 
     return Scaffold(
+      appBar: !kIsWeb
+          ? AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              leading: GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  )),
+            )
+          : null,
       key: scaffoldKey,
       body: ListView(
         children: [

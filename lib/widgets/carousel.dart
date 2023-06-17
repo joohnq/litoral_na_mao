@@ -30,19 +30,7 @@ class Carousel extends StatelessWidget {
               builder: (BuildContext context) {
                 return Stack(
                   children: [
-                    Container(
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          top: BorderSide(
-                            color: Color.fromARGB(255, 25, 60, 83),
-                            width: 8,
-                          ),
-                          bottom: BorderSide(
-                            color: Color.fromARGB(255, 25, 60, 83),
-                            width: 8,
-                          ),
-                        ),
-                      ),
+                    SizedBox(
                       child: Image.network(
                         i,
                         height: carouselHeight,
@@ -66,7 +54,8 @@ class Carousel extends StatelessWidget {
                                     text,
                                     style: TextStyle(
                                       fontSize: fontSize,
-                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w700,
                                       color: Colors.white,
                                       shadows: <Shadow>[
                                         Shadow(

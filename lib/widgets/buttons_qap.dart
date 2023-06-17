@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
+// import 'package:go_router/go_router.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -54,19 +55,22 @@ class ButtonsQap extends StatelessWidget {
   GestureDetector buildButton(BuildContext context, String text, String route) {
     return GestureDetector(
       onTap: () {
-        context.go(route);
+        Get.toNamed(route);
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: Container(
-          height: 30,
-          decoration: const BoxDecoration(color: ColorPalette.green),
+          height: 40,
+          decoration: BoxDecoration(
+              color: ColorPalette.green,
+              borderRadius: BorderRadius.circular(5)),
           child: Center(
             child: Text(
               text,
               style: const TextStyle(
                 color: ColorPalette.white,
-                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),
             ),

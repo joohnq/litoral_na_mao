@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 import 'package:litoral_na_mao/utils/format_text.dart';
@@ -10,12 +11,12 @@ import 'package:litoral_na_mao/widgets/carousel.dart';
 import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
 import 'package:litoral_na_mao/widgets/header.dart';
 import 'package:litoral_na_mao/widgets/form_search_bar.dart';
+import 'package:get/get.dart';
 
 class CityDetail extends StatefulWidget {
-  final String? nameCity;
-  const CityDetail({
+  final nameCity = Get.arguments["nameCity"];
+  CityDetail({
     Key? key,
-    required this.nameCity,
   }) : super(key: key);
 
   @override
@@ -76,6 +77,21 @@ class _CityDetailState extends State<CityDetail> {
     }
 
     return Scaffold(
+      appBar: !kIsWeb
+          ? AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              leading: GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
+                child: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                ),
+              ),
+            )
+          : null,
       key: scaffoldKey,
       body: ListView(
         children: [
@@ -85,9 +101,7 @@ class _CityDetailState extends State<CityDetail> {
             future: futureCities,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
+                return const CircularProgressIndicator();
               } else if (snapshot.hasError) {
                 return const Center(
                   child: Text('Erro ao buscar os dados da API'),
@@ -102,17 +116,34 @@ class _CityDetailState extends State<CityDetail> {
                       images: carouselImages,
                       carouselText: ['Seu guia', 'definitivo de', cityName],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Center(
-                        child: Text(
-                          cityName,
-                          style: const TextStyle(
-                            color: ColorPalette.green,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 40,
-                          ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10),
                         ),
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Center(
+                              child: Text(
+                                cityName,
+                                style: const TextStyle(
+                                  color: ColorPalette.green,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 40,
+                                ),
+                              ),
+                            ),
+                          ),
+                          ButtonsTeg(
+                            name: widget.nameCity ?? '',
+                          ),
+                          const ButtonsQap(),
+                        ],
                       ),
                     ),
                   ],
@@ -124,10 +155,6 @@ class _CityDetailState extends State<CityDetail> {
               }
             },
           ),
-          ButtonsTeg(
-            name: widget.nameCity ?? '',
-          ),
-          const ButtonsQap(),
         ],
       ),
       endDrawer: CustomDrawer(onCloseDrawer: closeDrawer),

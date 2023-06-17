@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:litoral_na_mao/utils/format_text.dart';
 
 class City extends StatelessWidget {
@@ -13,9 +13,9 @@ class City extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go(
-          '/${removerEspacosLetrasMaiusculas(name)}',
-        );
+        Get.toNamed('/${removerEspacosLetrasMaiusculas(name)}', arguments: {
+          'nameCity': removerEspacosLetrasMaiusculas(name),
+        });
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
@@ -28,8 +28,9 @@ class City extends StatelessWidget {
                 child: Text(
                   name[0].toUpperCase() + name.substring(1),
                   style: const TextStyle(
-                    fontSize: 22,
-                  ),
+                      fontSize: 22,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500),
                 ),
               ),
               Container(

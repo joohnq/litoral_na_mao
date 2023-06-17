@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 import 'package:litoral_na_mao/widgets/carousel.dart';
 import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
@@ -8,14 +10,29 @@ import 'package:litoral_na_mao/widgets/map.dart';
 import 'package:litoral_na_mao/widgets/social_media_section.dart';
 
 class CommercialGuideItemPage extends StatelessWidget {
-  const CommercialGuideItemPage({Key? key, required this.namePoint})
-      : super(key: key);
+  final namePoint = Get.arguments['namePoint'];
+  final desc = Get.arguments['desc'];
+  final location = Get.arguments['location'];
 
-  final String? namePoint;
+  CommercialGuideItemPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: !kIsWeb
+          ? AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              leading: GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  )),
+            )
+          : null,
       body: ListView(
         children: [
           const Header(),
@@ -43,7 +60,7 @@ class CommercialGuideItemPage extends StatelessWidget {
                   _buildInfoSection(
                     title: 'Endereço',
                     icon: Icons.place,
-                    text: 'R Luiz Passos Júnior, 69, 69\nCep:11660-270',
+                    text: location,
                   ),
                   _buildInfoSection(
                     title: 'Telefone(s)',

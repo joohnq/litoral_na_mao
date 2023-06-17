@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_print
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:litoral_na_mao/utils/format_text.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
@@ -10,12 +12,11 @@ import 'package:litoral_na_mao/widgets/header.dart';
 import 'package:litoral_na_mao/widgets/commercial_guide_point.dart';
 
 class CommercialGuideList extends StatefulWidget {
-  const CommercialGuideList({
-    Key? key,
-    required this.nameCity,
-  }) : super(key: key);
+  final nameCity = Get.parameters['nameCity'];
 
-  final String? nameCity;
+  CommercialGuideList({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<CommercialGuideList> createState() => _GuiaComercialListState();
@@ -45,6 +46,20 @@ class _GuiaComercialListState extends State<CommercialGuideList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: !kIsWeb
+          ? AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              leading: GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  )),
+            )
+          : null,
       body: ListView(
         children: [
           const Header(),

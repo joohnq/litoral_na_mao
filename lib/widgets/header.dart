@@ -8,6 +8,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
+        color: Colors.white,
         border: Border(
           bottom: BorderSide(
             color: ColorPalette.orange,
@@ -45,7 +46,11 @@ class Header extends StatelessWidget {
                   hoverColor: ColorPalette.transparent,
                   splashColor: ColorPalette.transparent,
                   highlightColor: ColorPalette.transparent,
-                  child: const Icon(Icons.menu_rounded, size: 35),
+                  child: const Icon(
+                    Icons.menu_outlined,
+                    size: 35,
+                    color: ColorPalette.blue,
+                  ),
                 ),
               ],
             ),

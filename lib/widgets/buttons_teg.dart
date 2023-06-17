@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 import 'package:litoral_na_mao/utils/format_text.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -72,35 +72,33 @@ class ButtonsTeg extends StatelessWidget {
   ) {
     return GestureDetector(
       onTap: () {
-        Future.delayed(Duration.zero, () {
-          final routeF = '/${arguments?['nameCity']}$route';
-          context.go(routeF);
-        });
+        Get.toNamed('/${arguments?['nameCity']}$route');
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: Container(
+          padding: const EdgeInsets.all(5),
           height: 100,
           decoration: BoxDecoration(
-            border: Border.all(
-              color: ColorPalette.blue,
-              width: 2,
-            ),
-          ),
+              color: ColorPalette.blue, borderRadius: BorderRadius.circular(5)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
                 icon,
                 size: isSmallScreen ? 40 : 60,
-                color: ColorPalette.blue,
+                color: ColorPalette.white,
+              ),
+              const SizedBox(
+                height: 5,
               ),
               Text(
                 text,
                 style: TextStyle(
-                  color: ColorPalette.blue,
-                  fontWeight: FontWeight.bold,
-                  fontSize: isSmallScreen ? 16 : 18,
+                  color: ColorPalette.white,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w600,
+                  fontSize: isSmallScreen ? 14 : 18,
                 ),
                 textAlign: TextAlign.center,
               ),

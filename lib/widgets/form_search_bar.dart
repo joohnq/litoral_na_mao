@@ -18,12 +18,20 @@ class FormSearchBar extends StatelessWidget {
                 child: SizedBox(
                   height: 50,
                   child: TextFormField(
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 12.0, horizontal: 20),
                       filled: true,
                       fillColor: ColorPalette.white,
                       hintText: 'Digite algo...',
+                      hintStyle: const TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
+                      ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                        borderRadius: BorderRadius.circular(
+                            5), // Valor do border radius desejado
+                        borderSide: BorderSide.none, // Removendo a borda
                       ),
                     ),
                   ),

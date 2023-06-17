@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -33,9 +34,15 @@ class CustomDrawer extends StatelessWidget {
               Icons.home_outlined,
               color: ColorPalette.orange,
             ),
-            title: const Text('Início'),
+            title: const Text(
+              'Início',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             onTap: () {
-              context.go('/');
+              Get.toNamed('/');
             },
           ),
           ListTile(
@@ -43,9 +50,15 @@ class CustomDrawer extends StatelessWidget {
               Icons.person_outlined,
               color: ColorPalette.orange,
             ),
-            title: const Text('Quem somos'),
+            title: const Text(
+              'Quem somos',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             onTap: () {
-              context.go('/quemsomos');
+              Get.toNamed('/quemsomos');
             },
           ),
           ListTile(
@@ -53,9 +66,15 @@ class CustomDrawer extends StatelessWidget {
               Icons.privacy_tip_outlined,
               color: ColorPalette.orange,
             ),
-            title: const Text('Privacidade'),
+            title: const Text(
+              'Privacidade',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             onTap: () {
-              context.go('/privacidade');
+              Get.toNamed('/privacidade');
             },
           ),
           ListTile(
@@ -63,7 +82,13 @@ class CustomDrawer extends StatelessWidget {
               Icons.close_outlined,
               color: ColorPalette.orange,
             ),
-            title: const Text('Fechar'),
+            title: const Text(
+              'Fechar',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             onTap: onCloseDrawer,
           ),
         ],
