@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:litoral_na_mao/common/font/font_style.dart';
 // import 'package:go_router/go_router.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -67,10 +68,8 @@ class ButtonsQap extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: const TextStyle(
+              style: TextFontStyle.semiBold.copyWith(
                 color: ColorPalette.white,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),
             ),

@@ -1,11 +1,10 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
 import 'package:litoral_na_mao/widgets/buttons_qap.dart';
 import 'package:litoral_na_mao/widgets/carousel.dart';
 import 'package:litoral_na_mao/widgets/cities.dart';
+import 'package:litoral_na_mao/widgets/custom_loading.dart';
 import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
 import 'package:litoral_na_mao/widgets/header.dart';
 
@@ -39,60 +38,60 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       key: scaffoldKey,
-      body: ListView(
-        children: [
-          const Header(),
-          FutureBuilder<List<City>>(
-            future: futureCities,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (snapshot.hasError) {
-                return const Center(
-                  child: Text('Erro ao buscar os dados da API'),
-                );
-              } else if (snapshot.hasData) {
-                final cities = snapshot.data!;
-                final carouselImages =
-                    cities.expand((city) => city.images).toList();
-                List<Map<String, String>> citiesData = [];
-                for (var i = 0; i < cities.length && i < 4; i++) {
-                  String name = cities[i].name;
-                  String firstImage = cities[i].images[0];
+      body: SafeArea(
+        child: ListView(
+          children: [
+            const Header(isHome: true),
+            FutureBuilder<List<City>>(
+              future: futureCities,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CustomLoading();
+                } else if (snapshot.hasError) {
+                  return const Center(
+                    child: Text('Erro ao buscar os dados da API'),
+                  );
+                } else if (snapshot.hasData) {
+                  final cities = snapshot.data!;
+                  final carouselImages =
+                      cities.expand((city) => city.images).toList();
+                  List<Map<String, String>> citiesData = [];
+                  for (var i = 0; i < cities.length && i < 4; i++) {
+                    String name = cities[i].name;
+                    String firstImage = cities[i].images[0];
 
-                  Map<String, String> data = {
-                    'name': name,
-                    'image': firstImage,
-                  };
+                    Map<String, String> data = {
+                      'name': name,
+                      'image': firstImage,
+                    };
 
-                  citiesData.add(data);
+                    citiesData.add(data);
+                  }
+                  return Column(
+                    children: [
+                      Carousel(
+                        images: carouselImages,
+                        carouselText: const [
+                          'O guia',
+                          'definitivo',
+                          'da sua Cidade'
+                        ],
+                      ),
+                      Cities(
+                        cities: citiesData,
+                      ),
+                    ],
+                  );
+                } else {
+                  return const Center(
+                    child: Text('Nenhum dado disponível'),
+                  );
                 }
-                return Column(
-                  children: [
-                    Carousel(
-                      images: carouselImages,
-                      carouselText: const [
-                        'O guia',
-                        'definitivo',
-                        'da sua Cidade'
-                      ],
-                    ),
-                    Cities(
-                      cities: citiesData,
-                    ),
-                  ],
-                );
-              } else {
-                return const Center(
-                  child: Text('Nenhum dado disponível'),
-                );
-              }
-            },
-          ),
-          const ButtonsQap(),
-        ],
+              },
+            ),
+            const ButtonsQap(),
+          ],
+        ),
       ),
       endDrawer: CustomDrawer(onCloseDrawer: closeDrawer),
     );

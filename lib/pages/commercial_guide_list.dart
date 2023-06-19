@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:litoral_na_mao/utils/format_text.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
+import 'package:litoral_na_mao/widgets/custom_loading.dart';
 import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
 import 'package:litoral_na_mao/widgets/form_search_bar.dart';
 import 'package:litoral_na_mao/widgets/header.dart';
@@ -46,62 +47,48 @@ class _GuiaComercialListState extends State<CommercialGuideList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: !kIsWeb
-          ? AppBar(
-              backgroundColor: Colors.white,
-              elevation: 0,
-              leading: GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: const Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                  )),
-            )
-          : null,
-      body: ListView(
-        children: [
-          const Header(),
-          const FormSearchBar(),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: FutureBuilder<List<CommercialGuide>>(
-                future: futurePoint,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (snapshot.hasError) {
-                    return const Center(
-                      child: Text('Erro ao buscar os dados da API'),
-                    );
-                  } else if (snapshot.hasData) {
-                    final points = snapshot.data!;
-                    return Wrap(
-                      spacing: 10,
-                      children: List.generate(
-                        points.length,
-                        (index) => CommercialGuidePoint(
-                          nameCity: widget.nameCity ?? '',
-                          namePoint: points[index].name,
-                          descPoint: points[index].description,
-                          locationPoint: "points[index].location",
+      body: SafeArea(
+        child: ListView(
+          children: [
+            const Header(),
+            const FormSearchBar(),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: FutureBuilder<List<CommercialGuide>>(
+                  future: futurePoint,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CustomLoading();
+                    } else if (snapshot.hasError) {
+                      return const Center(
+                        child: Text('Erro ao buscar os dados da API'),
+                      );
+                    } else if (snapshot.hasData) {
+                      final points = snapshot.data!;
+                      return Wrap(
+                        spacing: 10,
+                        children: List.generate(
+                          points.length,
+                          (index) => CommercialGuidePoint(
+                            nameCity: widget.nameCity ?? '',
+                            namePoint: points[index].name,
+                            descPoint: points[index].description,
+                            locationPoint: "points[index].location",
+                          ),
                         ),
-                      ),
-                    );
-                  } else {
-                    return const Center(
-                      child: Text('Nenhum dado disponível'),
-                    );
-                  }
-                },
+                      );
+                    } else {
+                      return const Center(
+                        child: Text('Nenhum dado disponível'),
+                      );
+                    }
+                  },
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       endDrawer: CustomDrawer(
         onCloseDrawer: () {

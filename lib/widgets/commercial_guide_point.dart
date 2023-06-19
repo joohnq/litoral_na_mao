@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:litoral_na_mao/common/font/font_style.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 
 class CommercialGuidePoint extends StatefulWidget {
@@ -97,20 +98,19 @@ class FirstWidget extends StatelessWidget {
                 children: [
                   Text(
                     pointData['name'],
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextFontStyle.semiBold.copyWith(fontSize: 20),
                   ),
                   Text(
                     pointData['desc'],
-                    style: const TextStyle(
-                        color: ColorPalette.orange, fontSize: 16),
+                    style: TextFontStyle.regular
+                        .copyWith(fontSize: 14, color: ColorPalette.orange),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: Text(
                       pointData['location'],
-                      style: const TextStyle(
-                          color: ColorPalette.lightGray, fontSize: 18),
+                      style: TextFontStyle.medium.copyWith(
+                          fontSize: 14, color: ColorPalette.lightGray),
                     ),
                   )
                 ],
@@ -177,20 +177,19 @@ class SecondWidget extends StatelessWidget {
                       children: [
                         Text(
                           pointData['name'],
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextFontStyle.semiBold.copyWith(fontSize: 20),
                         ),
                         Text(
                           pointData['desc'],
-                          style: const TextStyle(
-                              color: ColorPalette.orange, fontSize: 16),
+                          style: TextFontStyle.regular.copyWith(
+                              fontSize: 14, color: ColorPalette.orange),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 10),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
                           child: Text(
-                            'Localização',
-                            style: TextStyle(
-                                color: ColorPalette.lightGray, fontSize: 18),
+                            pointData['location'],
+                            style: TextFontStyle.medium.copyWith(
+                                fontSize: 14, color: ColorPalette.lightGray),
                           ),
                         )
                       ],

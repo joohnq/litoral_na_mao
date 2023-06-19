@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:litoral_na_mao/common/font/font_style.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 import 'package:litoral_na_mao/utils/format_text.dart';
 // import 'package:litoral_na_mao/future_builder.dart';
@@ -12,6 +13,7 @@ import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
 import 'package:litoral_na_mao/widgets/header.dart';
 import 'package:litoral_na_mao/widgets/form_search_bar.dart';
 import 'package:get/get.dart';
+import 'package:litoral_na_mao/widgets/custom_loading.dart';
 
 class CityDetail extends StatefulWidget {
   final nameCity = Get.arguments["nameCity"];
@@ -77,85 +79,69 @@ class _CityDetailState extends State<CityDetail> {
     }
 
     return Scaffold(
-      appBar: !kIsWeb
-          ? AppBar(
-              backgroundColor: Colors.white,
-              elevation: 0,
-              leading: GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                child: const Icon(
-                  Icons.arrow_back,
-                  color: Colors.black,
-                ),
-              ),
-            )
-          : null,
       key: scaffoldKey,
-      body: ListView(
-        children: [
-          const Header(),
-          const FormSearchBar(),
-          FutureBuilder(
-            future: futureCities,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return const Center(
-                  child: Text('Erro ao buscar os dados da API'),
-                );
-              } else if (snapshot.hasData) {
-                final cityName = this.cityName;
-                final carouselImages = this.carouselImages;
-
-                return Column(
-                  children: [
-                    Carousel(
-                      images: carouselImages,
-                      carouselText: ['Seu guia', 'definitivo de', cityName],
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10),
-                        ),
+      body: SafeArea(
+        child: ListView(
+          children: [
+            const Header(),
+            const FormSearchBar(),
+            FutureBuilder(
+              future: futureCities,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CustomLoading();
+                } else if (snapshot.hasError) {
+                  return const Center(
+                    child: Text('Erro ao buscar os dados da API'),
+                  );
+                } else if (snapshot.hasData) {
+                  final cityName = this.cityName;
+                  final carouselImages = this.carouselImages;
+                  return Column(
+                    children: [
+                      Carousel(
+                        images: carouselImages,
+                        carouselText: ['Seu guia', 'definitivo de', cityName],
                       ),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Center(
-                              child: Text(
-                                cityName,
-                                style: const TextStyle(
-                                  color: ColorPalette.green,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 40,
+                      Container(
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Center(
+                                child: Text(
+                                  cityName,
+                                  style: TextFontStyle.bold.copyWith(
+                                    fontSize: 40,
+                                    color: ColorPalette.green,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          ButtonsTeg(
-                            name: widget.nameCity ?? '',
-                          ),
-                          const ButtonsQap(),
-                        ],
+                            ButtonsTeg(
+                              name: widget.nameCity ?? '',
+                            ),
+                            const ButtonsQap(),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              } else {
-                return const Center(
-                  child: Text('Nenhum dado disponível'),
-                );
-              }
-            },
-          ),
-        ],
+                    ],
+                  );
+                } else {
+                  return const Center(
+                    child: Text('Nenhum dado disponível'),
+                  );
+                }
+              },
+            ),
+          ],
+        ),
       ),
       endDrawer: CustomDrawer(onCloseDrawer: closeDrawer),
     );

@@ -9,7 +9,7 @@ class SocialMediaSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 20),
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
       child: const Row(
         children: [
           SocialMediaIcon(

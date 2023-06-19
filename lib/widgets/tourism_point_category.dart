@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 class TourismPointCategory extends StatelessWidget {
   final String nameCity;
   final String nameCategory;
@@ -30,7 +31,10 @@ class TourismPointCategory extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Text(
             nameCategory[0].toUpperCase() + nameCategory.substring(1),
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(
+                fontSize: 20,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w600),
           ),
         ),
       ),

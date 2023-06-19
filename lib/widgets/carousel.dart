@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:litoral_na_mao/common/font/font_style.dart';
 
 class Carousel extends StatelessWidget {
   const Carousel({Key? key, required this.images, required this.carouselText})
@@ -52,10 +53,8 @@ class Carousel extends StatelessWidget {
                                 (text) {
                                   return Text(
                                     text,
-                                    style: TextStyle(
+                                    style: TextFontStyle.bold.copyWith(
                                       fontSize: fontSize,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w700,
                                       color: Colors.white,
                                       shadows: <Shadow>[
                                         Shadow(

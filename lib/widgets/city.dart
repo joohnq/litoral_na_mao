@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:litoral_na_mao/common/font/font_style.dart';
 import 'package:litoral_na_mao/utils/format_text.dart';
 
 class City extends StatelessWidget {
@@ -27,10 +28,7 @@ class City extends StatelessWidget {
                 margin: const EdgeInsets.only(bottom: 10),
                 child: Text(
                   name[0].toUpperCase() + name.substring(1),
-                  style: const TextStyle(
-                      fontSize: 22,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500),
+                  style: TextFontStyle.medium.copyWith(fontSize: 22),
                 ),
               ),
               Container(

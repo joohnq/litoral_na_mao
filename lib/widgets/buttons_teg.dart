@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:litoral_na_mao/common/font/font_style.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 import 'package:litoral_na_mao/utils/format_text.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -94,10 +95,8 @@ class ButtonsTeg extends StatelessWidget {
               ),
               Text(
                 text,
-                style: TextStyle(
+                style: TextFontStyle.semiBold.copyWith(
                   color: ColorPalette.white,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
                   fontSize: isSmallScreen ? 14 : 18,
                 ),
                 textAlign: TextAlign.center,

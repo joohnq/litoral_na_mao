@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litoral_na_mao/common/font/font_style.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 
 class FormSearchBar extends StatelessWidget {
@@ -24,10 +25,7 @@ class FormSearchBar extends StatelessWidget {
                       filled: true,
                       fillColor: ColorPalette.white,
                       hintText: 'Digite algo...',
-                      hintStyle: const TextStyle(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600,
-                      ),
+                      hintStyle: TextFontStyle.semiBold,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
                             5), // Valor do border radius desejado

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:litoral_na_mao/common/font/font_style.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
@@ -37,90 +38,76 @@ class _TourismItemPageState extends State<TourismItemPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: !kIsWeb
-          ? AppBar(
-              backgroundColor: Colors.white,
-              elevation: 0,
-              leading: GestureDetector(
-                  onTap: () {
-                    Get.back;
-                  },
-                  child: const Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                  )),
-            )
-          : null,
-      body: ListView(
-        children: [
-          const Header(),
-          const FormSearchBar(),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.only(top: 20),
-              constraints: const BoxConstraints(maxWidth: 1000),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Center(
-                    child: ResponsiveBuilder(
+      body: SafeArea(
+        child: ListView(
+          children: [
+            const Header(),
+            const FormSearchBar(),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.only(top: 20),
+                constraints: const BoxConstraints(maxWidth: 1000),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Center(
+                      child: ResponsiveBuilder(
+                        builder: (context, sizingInformation) {
+                          final bool isSmallScreen =
+                              sizingInformation.screenSize.width < 576;
+                          final TextStyle textStyle = TextStyle(
+                            color: ColorPalette.green,
+                            fontWeight: FontWeight.bold,
+                            fontSize: isSmallScreen ? 28 : 40,
+                          );
+                          return Text(
+                            'Turismo - ${widget.nameCity![0].toUpperCase() + widget.nameCity!.substring(1)}',
+                            style: textStyle,
+                          );
+                        },
+                      ),
+                    ),
+                    ResponsiveBuilder(
                       builder: (context, sizingInformation) {
                         final bool isSmallScreen =
                             sizingInformation.screenSize.width < 576;
-                        final TextStyle textStyle = TextStyle(
-                          color: ColorPalette.green,
-                          fontWeight: FontWeight.bold,
-                          fontSize: isSmallScreen ? 28 : 40,
+                        final TextStyle textStyle = TextFontStyle.bold.copyWith(
+                          fontSize: isSmallScreen ? 24 : 30,
                         );
-                        return Text(
-                          'Turismo - ${widget.nameCity![0].toUpperCase() + widget.nameCity!.substring(1)}',
-                          style: textStyle,
+                        return Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                          child: Text(
+                            widget.namePoint![0].toUpperCase() +
+                                widget.namePoint!.substring(1),
+                            style: textStyle,
+                          ),
                         );
                       },
                     ),
-                  ),
-                  ResponsiveBuilder(
-                    builder: (context, sizingInformation) {
-                      final bool isSmallScreen =
-                          sizingInformation.screenSize.width < 576;
-                      final TextStyle textStyle = TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: isSmallScreen ? 24 : 30,
-                      );
-                      return Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-                        child: Text(
-                          widget.namePoint![0].toUpperCase() +
-                              widget.namePoint!.substring(1),
-                          style: textStyle,
-                        ),
-                      );
-                    },
-                  ),
-                  Container(
-                    constraints: const BoxConstraints(maxWidth: 800),
-                    child: Image.asset(
-                      'assets/images/caraguatatuba.jpg',
-                      height: 400,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-                    child: Text(
-                      widget.desc,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.normal,
-                        fontSize: 18,
-                        height: 1.5,
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 800),
+                      child: Image.asset(
+                        'assets/images/caraguatatuba.jpg',
+                        height: 400,
+                        fit: BoxFit.cover,
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                      child: Text(
+                        widget.desc,
+                        style: TextFontStyle.medium.copyWith(
+                          fontSize: 18,
+                          height: 1.5,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       endDrawer: CustomDrawer(
         onCloseDrawer: () {

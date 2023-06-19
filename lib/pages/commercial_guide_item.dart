@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:litoral_na_mao/common/font/font_style.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 import 'package:litoral_na_mao/widgets/carousel.dart';
 import 'package:litoral_na_mao/widgets/drawer_litoral.dart';
@@ -19,75 +19,62 @@ class CommercialGuideItemPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: !kIsWeb
-          ? AppBar(
-              backgroundColor: Colors.white,
-              elevation: 0,
-              leading: GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: const Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                  )),
-            )
-          : null,
-      body: ListView(
-        children: [
-          const Header(),
-          const FormSearchBar(),
-          Center(
-            child: Container(
-              constraints: const BoxConstraints(maxWidth: 1000),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 30),
-                    child: Center(
-                      child: Text(
-                        namePoint!,
-                        style: const TextStyle(
-                          color: ColorPalette.green,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 40,
+      body: SafeArea(
+        child: ListView(
+          children: [
+            const Header(),
+            const FormSearchBar(),
+            Center(
+              child: Container(
+                constraints: const BoxConstraints(maxWidth: 1000),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 30),
+                      child: Center(
+                        child: Text(
+                          namePoint!,
+                          style: TextFontStyle.bold.copyWith(
+                            fontSize: 30,
+                            color: ColorPalette.green,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const Carousel(images: [], carouselText: []),
-                  _buildInfoSection(
-                    title: 'Endereço',
-                    icon: Icons.place,
-                    text: location,
-                  ),
-                  _buildInfoSection(
-                    title: 'Telefone(s)',
-                    icon: Icons.phone,
-                    text: '(12) 3882-1585\n(12) 3882-1585',
-                  ),
-                  const SocialMediaSection(),
-                  _buildInfoSection(
-                    title: 'Horário de Funcionamento',
-                    icon: Icons.access_time,
-                    text: 'Horários...',
-                  ),
-                  _buildInfoSection(
-                    title: 'Sobre',
-                    icon: Icons.info,
-                    text: 'Sobre...',
-                  ),
-                  _buildInfoSection(
-                    title: 'Como Chegar',
-                    icon: Icons.directions,
-                    child: const MapCustom(),
-                  ),
-                ],
+                    const Carousel(images: [], carouselText: []),
+                    _buildInfoSection(
+                      title: 'Endereço',
+                      icon: Icons.place,
+                      text: location,
+                    ),
+                    _buildInfoSection(
+                      title: 'Telefone(s)',
+                      icon: Icons.phone,
+                      text: '(12) 3882-1585\n(12) 3882-1585',
+                    ),
+                    const SocialMediaSection(),
+                    _buildInfoSection(
+                      title: 'Horário de Funcionamento',
+                      icon: Icons.access_time,
+                      text: 'Horários...',
+                    ),
+                    _buildInfoSection(
+                      title: 'Sobre',
+                      icon: Icons.info,
+                      text: 'Sobre...',
+                    ),
+                    _buildInfoSection(
+                      title: 'Como Chegar',
+                      icon: Icons.directions,
+                      child: const MapCustom(),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       endDrawer: CustomDrawer(
         onCloseDrawer: () {
@@ -104,7 +91,7 @@ class CommercialGuideItemPage extends StatelessWidget {
     Widget? child,
   }) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 20),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -112,9 +99,8 @@ class CommercialGuideItemPage extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
             child: Text(
               title,
-              style: const TextStyle(
+              style: TextFontStyle.semiBold.copyWith(
                 color: ColorPalette.orange,
-                fontSize: 22,
               ),
             ),
           ),
@@ -129,9 +115,9 @@ class CommercialGuideItemPage extends StatelessWidget {
                 const SizedBox(width: 10),
                 Text(
                   text,
-                  style: const TextStyle(
+                  style: TextFontStyle.regular.copyWith(
                     color: ColorPalette.lightGray,
-                    fontSize: 18,
+                    fontSize: 16,
                   ),
                 ),
               ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:litoral_na_mao/common/theme/custom_theme.dart';
 import 'package:litoral_na_mao/pages/anuncie.dart';
 import 'package:litoral_na_mao/pages/city_detail.dart';
 import 'package:litoral_na_mao/pages/commercial_guide_item.dart';
@@ -12,7 +11,6 @@ import 'package:litoral_na_mao/pages/quem_somos.dart';
 import 'package:litoral_na_mao/pages/tourism_item.dart';
 import 'package:litoral_na_mao/pages/tourism_list.dart';
 import 'package:litoral_na_mao/pages/tourism_list_category.dart';
-// import 'package:litoral_na_mao/routes.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -20,7 +18,6 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: customTheme,
       title: 'Litoral na Mão',
       initialRoute: '/',
       debugShowCheckedModeBanner: false,

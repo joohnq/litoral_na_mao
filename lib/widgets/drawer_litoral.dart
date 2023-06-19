@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:litoral_na_mao/common/font/font_style.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -34,13 +34,7 @@ class CustomDrawer extends StatelessWidget {
               Icons.home_outlined,
               color: ColorPalette.orange,
             ),
-            title: const Text(
-              'Início',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-              ),
-            ),
+            title: const Text('Início', style: TextFontStyle.medium),
             onTap: () {
               Get.toNamed('/');
             },
@@ -52,10 +46,7 @@ class CustomDrawer extends StatelessWidget {
             ),
             title: const Text(
               'Quem somos',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-              ),
+              style: TextFontStyle.medium,
             ),
             onTap: () {
               Get.toNamed('/quemsomos');
@@ -68,10 +59,7 @@ class CustomDrawer extends StatelessWidget {
             ),
             title: const Text(
               'Privacidade',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-              ),
+              style: TextFontStyle.medium,
             ),
             onTap: () {
               Get.toNamed('/privacidade');
@@ -84,10 +72,7 @@ class CustomDrawer extends StatelessWidget {
             ),
             title: const Text(
               'Fechar',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-              ),
+              style: TextFontStyle.medium,
             ),
             onTap: onCloseDrawer,
           ),

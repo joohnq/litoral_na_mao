@@ -41,7 +41,10 @@ class TourismPoint extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Text(
             namePoint[0].toUpperCase() + namePoint.substring(1),
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(
+                fontSize: 20,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w600),
           ),
         ),
       ),
