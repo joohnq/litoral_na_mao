@@ -152,7 +152,6 @@ class SecondWidget extends StatelessWidget {
         decoration: const BoxDecoration(
             color: Color.fromRGBO(217, 217, 217, 1),
             borderRadius: BorderRadius.all(Radius.circular(20))),
-        // constraints: const BoxConstraints(minHeight: 250),
         width: 400,
         child: Column(
           children: [

@@ -69,7 +69,7 @@ class Carousel extends StatelessWidget {
                               ).toList(),
                             ),
                           if (carouselText.isEmpty)
-                            Container(), // Espaço reservado
+                            Container(), 
                         ],
                       ),
                     ),

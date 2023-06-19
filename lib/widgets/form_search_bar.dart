@@ -27,9 +27,8 @@ class FormSearchBar extends StatelessWidget {
                       hintText: 'Digite algo...',
                       hintStyle: TextFontStyle.semiBold,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                            5), // Valor do border radius desejado
-                        borderSide: BorderSide.none, // Removendo a borda
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: BorderSide.none,
                       ),
                     ),
                   ),
@@ -37,9 +36,9 @@ class FormSearchBar extends StatelessWidget {
               ),
               const SizedBox(
                 width: 10,
-              ), // Espaçamento entre o campo de entrada e o ícone
+              ),
               const SizedBox(
-                width: 30, // Largura fixa do ícone
+                width: 30,
                 child: Icon(
                   Icons.search,
                   color: ColorPalette.white,

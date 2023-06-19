@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:litoral_na_mao/utils/format_text.dart';
@@ -8,7 +7,6 @@ import 'package:litoral_na_mao/widgets/custom_loading.dart';
 import 'package:litoral_na_mao/widgets/form_search_bar.dart';
 import 'package:litoral_na_mao/widgets/header.dart';
 import 'package:litoral_na_mao/widgets/tourism_point.dart';
-// import 'package:litoral_na_mao/widgets/Turism/turism_point.dart';
 
 class TourismList extends StatefulWidget {
   final nameCity = Get.parameters['nameCity'];
