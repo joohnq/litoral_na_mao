@@ -23,7 +23,8 @@ class QuemSomos extends StatelessWidget {
             const Header(),
             Center(
               child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 constraints: const BoxConstraints(maxWidth: 1000),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
