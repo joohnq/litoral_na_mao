@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:litoral_na_mao/utils/format_text.dart';
 
 class TourismPointCategory extends StatelessWidget {
   final String nameCity;
@@ -25,7 +26,8 @@ class TourismPointCategory extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Get.toNamed(
-              '/$nameCity/tourism/${nameCategory[0].toLowerCase() + nameCategory.substring(1)}');
+            '/${removerEspacosLetrasMaiusculas(nameCity)}/tourism/${removerEspacosLetrasMaiusculas(nameCategory)}',
+          );
         },
         child: Padding(
           padding: const EdgeInsets.all(10),

@@ -3,7 +3,19 @@ import 'package:litoral_na_mao/models/city.dart';
 
 final dio = Dio();
 
-Future<List<City>> getHttp() async {
+Future apiRequest(String url) async {
+  Response response;
+  try {
+    response = await dio.get(url);
+    final data = response.data;
+    return data;
+  } catch (error) {
+    Exception('Erro ao buscar os dados da API: $error');
+    rethrow;
+  }
+}
+
+Future<List<City>> getAllCities() async {
   Response response;
   try {
     response = await dio.get('https://api-litoral.vercel.app/api/cities');

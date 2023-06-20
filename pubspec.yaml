@@ -23,6 +23,7 @@ dependencies:
   url_launcher:
   dio:
   get:
+  diacritic:
 
 dev_dependencies:
   flutter_test:

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:litoral_na_mao/common/font/font_style.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
+import 'package:litoral_na_mao/utils/format_text.dart';
 
 class CommercialGuidePoint extends StatefulWidget {
   const CommercialGuidePoint(
@@ -140,7 +141,7 @@ class SecondWidget extends StatelessWidget {
       onTap: onToggle,
       onDoubleTap: () {
         Get.toNamed(
-          "/$nameCity/commercialguide/${pointData['pointName']}",
+          "/$nameCity/commercialguide/${removerEspacosLetrasMaiusculas(pointData['name'])}",
           arguments: {
             "namePoint": pointData['name'],
             "desc": pointData['desc'],

@@ -16,16 +16,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late Future<List<City>> futureCities;
+  late Future<List<City>> cities;
 
   @override
   void initState() {
     super.initState();
-    futureCities = fetchApi();
+    cities = fetchApi();
   }
 
   Future<List<City>> fetchApi() async {
-    return await getHttp();
+    return await getAllCities();
   }
 
   @override
@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
           children: [
             const Header(isHome: true),
             FutureBuilder<List<City>>(
-              future: futureCities,
+              future: cities,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const CustomLoading();
@@ -52,25 +52,12 @@ class _HomeState extends State<Home> {
                     child: Text('Erro ao buscar os dados da API'),
                   );
                 } else if (snapshot.hasData) {
-                  final cities = snapshot.data!;
-                  final carouselImages =
-                      cities.expand((city) => city.images).toList();
-                  List<Map<String, String>> citiesData = [];
-                  for (var i = 0; i < cities.length && i < 4; i++) {
-                    String name = cities[i].name;
-                    String firstImage = cities[i].images[0];
-
-                    Map<String, String> data = {
-                      'name': name,
-                      'image': firstImage,
-                    };
-
-                    citiesData.add(data);
-                  }
+                  final citiesData = snapshot.data!;
                   return Column(
                     children: [
                       Carousel(
-                        images: carouselImages,
+                        images:
+                            citiesData.expand((city) => city.images).toList(),
                         carouselText: const [
                           'O guia',
                           'definitivo',
@@ -78,7 +65,10 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                       Cities(
-                        cities: citiesData,
+                        cities: citiesData
+                            .take(4)
+                            .map((e) => {"name": e.name, "image": e.images[0]})
+                            .toList(),
                       ),
                     ],
                   );

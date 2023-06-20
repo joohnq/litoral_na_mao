@@ -14,9 +14,9 @@ class City extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed('/${removerEspacosLetrasMaiusculas(name)}', arguments: {
-          'nameCity': removerEspacosLetrasMaiusculas(name),
-        });
+        Get.toNamed(
+          '/${removerEspacosLetrasMaiusculas(name)}',
+        );
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,

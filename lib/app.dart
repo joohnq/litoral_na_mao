@@ -5,6 +5,7 @@ import 'package:litoral_na_mao/pages/anuncie.dart';
 import 'package:litoral_na_mao/pages/city_detail.dart';
 import 'package:litoral_na_mao/pages/commercial_guide_item.dart';
 import 'package:litoral_na_mao/pages/commercial_guide_list.dart';
+import 'package:litoral_na_mao/pages/events_list.dart';
 import 'package:litoral_na_mao/pages/home.dart';
 import 'package:litoral_na_mao/pages/privacidade.dart';
 import 'package:litoral_na_mao/pages/quem_somos.dart';
@@ -37,6 +38,7 @@ class App extends StatelessWidget {
         GetPage(
             name: '/:nameCity/tourism/:category/:namePoint',
             page: () => TourismItemPage()),
+        GetPage(name: '/:nameCity/events', page: () => EventsList()),
         GetPage(
             name: '/:nameCity/commercialguide',
             page: () => CommercialGuideList()),

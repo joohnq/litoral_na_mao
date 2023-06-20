@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:litoral_na_mao/common/font/font_style.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
-import 'package:litoral_na_mao/utils/format_text.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ButtonsTeg extends StatelessWidget {
@@ -40,8 +39,8 @@ class ButtonsTeg extends StatelessWidget {
                   context,
                   Icons.calendar_month,
                   'Eventos',
-                  '',
-                  null,
+                  '/events',
+                  {'nameCity': name},
                   isSmallScreen,
                 ),
               ),
@@ -52,7 +51,7 @@ class ButtonsTeg extends StatelessWidget {
                   Icons.place,
                   'Guia Comercial',
                   '/commercialguide',
-                  {'nameCity': removerEspacosLetrasMaiusculas(name)},
+                  {'nameCity': name},
                   isSmallScreen,
                 ),
               ),
@@ -79,7 +78,6 @@ class ButtonsTeg extends StatelessWidget {
         cursor: SystemMouseCursors.click,
         child: Container(
           padding: const EdgeInsets.all(5),
-          height: 100,
           decoration: BoxDecoration(
               color: ColorPalette.blue, borderRadius: BorderRadius.circular(5)),
           child: Column(

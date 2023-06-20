@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:litoral_na_mao/common/font/font_style.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
-import 'package:litoral_na_mao/utils/format_text.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
+// import 'package:litoral_na_mao/utils/format_text.dart';
 import 'package:litoral_na_mao/widgets/buttons_qap.dart';
 import 'package:litoral_na_mao/widgets/buttons_teg.dart';
 import 'package:litoral_na_mao/widgets/carousel.dart';
@@ -14,7 +14,7 @@ import 'package:get/get.dart';
 import 'package:litoral_na_mao/widgets/custom_loading.dart';
 
 class CityDetail extends StatefulWidget {
-  final nameCity = Get.arguments["nameCity"];
+  final nameCity = Get.parameters["value"];
   CityDetail({
     Key? key,
   }) : super(key: key);
@@ -24,48 +24,18 @@ class CityDetail extends StatefulWidget {
 }
 
 class _CityDetailState extends State<CityDetail> {
-  late Future<List<City>> futureCities;
-  late String cityName;
-  late List<String> carouselImages;
-  late List<Map<String, String>> citiesData;
+  late Future<City> city;
 
   @override
   void initState() {
     super.initState();
-    futureCities = fetchApi();
+    city = fetchRequest();
   }
 
-  Future<List<City>> fetchApi() async {
-    List<City> cities = await getHttp();
-
-    cityName = cities
-        .where((city) {
-          return removerEspacosLetrasMaiusculas(city.name) == widget.nameCity;
-        })
-        .map((city) => city.name)
-        .toList()[0];
-
-    carouselImages = cities
-        .where((city) {
-          return removerEspacosLetrasMaiusculas(city.name) == widget.nameCity;
-        })
-        .expand((city) => city.images)
-        .toList();
-
-    citiesData = [];
-    for (var i = 0; i < cities.length && i < 4; i++) {
-      String name = cities[i].name;
-      String firstImage = cities[i].images[0];
-
-      Map<String, String> data = {
-        'name': name,
-        'image': firstImage,
-      };
-
-      citiesData.add(data);
-    }
-
-    return cities;
+  Future<City> fetchRequest() async {
+    var result = City.fromJson(await apiRequest(
+        'https://api-litoral.vercel.app/api/cities/${widget.nameCity}'));
+    return result;
   }
 
   @override
@@ -84,7 +54,7 @@ class _CityDetailState extends State<CityDetail> {
             const Header(),
             const FormSearchBar(),
             FutureBuilder(
-              future: futureCities,
+              future: city,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const CustomLoading();
@@ -93,13 +63,16 @@ class _CityDetailState extends State<CityDetail> {
                     child: Text('Erro ao buscar os dados da API'),
                   );
                 } else if (snapshot.hasData) {
-                  final cityName = this.cityName;
-                  final carouselImages = this.carouselImages;
+                  City? cityData = snapshot.data;
                   return Column(
                     children: [
                       Carousel(
-                        images: carouselImages,
-                        carouselText: ['Seu guia', 'definitivo de', cityName],
+                        images: cityData!.images,
+                        carouselText: [
+                          'Seu guia',
+                          'definitivo de',
+                          (cityData.name)
+                        ],
                       ),
                       Container(
                         decoration: const BoxDecoration(
@@ -114,7 +87,7 @@ class _CityDetailState extends State<CityDetail> {
                               padding: const EdgeInsets.only(top: 10),
                               child: Center(
                                 child: Text(
-                                  cityName,
+                                  cityData.name,
                                   style: TextFontStyle.bold.copyWith(
                                     fontSize: 40,
                                     color: ColorPalette.green,

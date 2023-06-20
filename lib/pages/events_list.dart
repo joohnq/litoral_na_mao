@@ -2,42 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
-import 'package:litoral_na_mao/utils/format_text.dart';
 import 'package:litoral_na_mao/widgets/custom_loading.dart';
 import 'package:litoral_na_mao/widgets/form_search_bar.dart';
 import 'package:litoral_na_mao/widgets/header.dart';
 import 'package:litoral_na_mao/widgets/tourism_point.dart';
 
-class TourismList extends StatefulWidget {
-  final nameCity = Get.parameters['nameCity']!;
-  final nameCategory = Get.parameters['nameCategory'];
+class EventsList extends StatefulWidget {
+  final nameCity = Get.parameters['nameCity'];
 
-  TourismList({
+  EventsList({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<TourismList> createState() => _TourismListState();
+  State<EventsList> createState() => _EventsListState();
 }
 
-class _TourismListState extends State<TourismList> {
-  late Future<List<Point>> tourismPoints;
+class _EventsListState extends State<EventsList> {
+  late Future<List<Event>> events;
 
   @override
   void initState() {
     super.initState();
-    tourismPoints = fetchRequest();
+    events = fetchRequest();
   }
 
-  Future<List<Point>> fetchRequest() async {
-    List<Point> tourismPoint = [];
+  Future<List<Event>> fetchRequest() async {
+    List<Event> events = [];
     List resultList = await apiRequest(
-        'https://api-litoral.vercel.app/api/cities/${removerEspacosLetrasMaiusculas(widget.nameCity)}/tourism/points');
+        'https://api-litoral.vercel.app/api/cities/${widget.nameCity}/events/${widget.nameCity}');
 
     for (var i in resultList) {
-      tourismPoint.add(Point.fromJson(i));
+      events.add(Event.fromJson(i));
     }
-    return tourismPoint;
+    return events;
   }
 
   @override
@@ -54,7 +52,7 @@ class _TourismListState extends State<TourismList> {
                   margin: const EdgeInsets.only(top: 20),
                   constraints: const BoxConstraints(maxWidth: 1000),
                   child: FutureBuilder(
-                    future: tourismPoints,
+                    future: events,
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const CustomLoading();
@@ -63,15 +61,15 @@ class _TourismListState extends State<TourismList> {
                           child: Text('Erro ao buscar os dados da API'),
                         );
                       } else if (snapshot.hasData) {
-                        final tourismPoints = snapshot.data!;
+                        final eventsPoints = snapshot.data!;
                         return ListView.builder(
-                          itemCount: tourismPoints.length,
+                          itemCount: eventsPoints.length,
                           itemBuilder: (context, index) {
                             return TourismPoint(
-                              nameCity: widget.nameCity,
-                              namePoint: tourismPoints[index].name,
-                              descPoint: tourismPoints[index].description,
-                              category: widget.nameCategory!,
+                              nameCity: widget.nameCity!,
+                              namePoint: eventsPoints[index].name,
+                              descPoint: eventsPoints[index].description,
+                              category: "widget.nameCategory!",
                             );
                           },
                         );

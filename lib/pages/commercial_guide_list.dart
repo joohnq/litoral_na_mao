@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:litoral_na_mao/utils/format_text.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
 import 'package:litoral_na_mao/widgets/custom_loading.dart';
@@ -21,24 +20,23 @@ class CommercialGuideList extends StatefulWidget {
 }
 
 class _GuiaComercialListState extends State<CommercialGuideList> {
-  late Future<List<CommercialGuide>> futurePoint;
+  late Future<List<CommercialGuide>> commercialGuide;
 
   @override
   void initState() {
     super.initState();
-    futurePoint = fetchPoints();
+    commercialGuide = fetchRequest();
   }
 
-  Future<List<CommercialGuide>> fetchPoints() async {
-    final cities = await getHttp();
-    final filteredCity = cities.firstWhere(
-      (city) => removerEspacosLetrasMaiusculas(city.name) == widget.nameCity,
-      orElse: () =>
-          City(name: '', tourism: [], images: [], commercialGuide: []),
-    );
-    return filteredCity.commercialGuide
-        .map((guiaComercial) => guiaComercial)
-        .toList();
+  Future<List<CommercialGuide>> fetchRequest() async {
+    List<CommercialGuide> commercialGuideData = [];
+    List resultList = await apiRequest(
+        'https://api-litoral.vercel.app/api/cities/${widget.nameCity}/commercialGuide/${widget.nameCity}');
+
+    for (var item in resultList) {
+      commercialGuideData.add(CommercialGuide.fromJson(item));
+    }
+    return commercialGuideData;
   }
 
   @override
@@ -53,7 +51,7 @@ class _GuiaComercialListState extends State<CommercialGuideList> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: FutureBuilder<List<CommercialGuide>>(
-                  future: futurePoint,
+                  future: commercialGuide,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const CustomLoading();
@@ -62,15 +60,15 @@ class _GuiaComercialListState extends State<CommercialGuideList> {
                         child: Text('Erro ao buscar os dados da API'),
                       );
                     } else if (snapshot.hasData) {
-                      final points = snapshot.data!;
+                      final commercialGuidePoints = snapshot.data!;
                       return Wrap(
                         spacing: 10,
                         children: List.generate(
-                          points.length,
+                          commercialGuidePoints.length,
                           (index) => CommercialGuidePoint(
                             nameCity: widget.nameCity ?? '',
-                            namePoint: points[index].name,
-                            descPoint: points[index].description,
+                            namePoint: commercialGuidePoints[index].name,
+                            descPoint: commercialGuidePoints[index].description,
                             locationPoint: "points[index].location",
                           ),
                         ),

@@ -30,12 +30,7 @@ class TourismPoint extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Get.toNamed(
-              '/$nameCity/tourism/$category/${removerEspacosLetrasMaiusculas(namePoint)}',
-              arguments: {
-                "nameCity": nameCity,
-                "namePoint": namePoint,
-                "desc": descPoint
-              });
+              '/${removerEspacosLetrasMaiusculas(nameCity)}/tourism/$category/${removerEspacosLetrasMaiusculas(namePoint)}');
         },
         child: Padding(
           padding: const EdgeInsets.all(10),
