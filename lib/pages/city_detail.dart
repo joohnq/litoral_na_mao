@@ -3,7 +3,6 @@ import 'package:litoral_na_mao/common/font/font_style.dart';
 import 'package:litoral_na_mao/common/theme/colors.dart';
 import 'package:litoral_na_mao/models/city.dart';
 import 'package:litoral_na_mao/services/api_service.dart';
-// import 'package:litoral_na_mao/utils/format_text.dart';
 import 'package:litoral_na_mao/widgets/buttons_qap.dart';
 import 'package:litoral_na_mao/widgets/buttons_teg.dart';
 import 'package:litoral_na_mao/widgets/carousel.dart';

@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:litoral_na_mao/common/font/font_style.dart';
